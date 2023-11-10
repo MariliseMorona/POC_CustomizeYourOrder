@@ -22,7 +22,8 @@ jobs:
       
     - name: Install CocoaPods
       run:
-        pod _1.13.0_ install
+        gem install cocoapods -v latest
+        pod install
         
     - name: Build and Test
       run: xcodebuild clean build test -workspace POC_CustomizeYourOrder/POC_CustomizeYourOrder.workspace -scheme "CI" -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 14" ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
