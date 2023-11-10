@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_POC_CustomizeYourOrder_POC_CustomizeYourOrderUITests : NSObject
+@end
+@implementation PodsDummy_Pods_POC_CustomizeYourOrder_POC_CustomizeYourOrderUITests
+@end

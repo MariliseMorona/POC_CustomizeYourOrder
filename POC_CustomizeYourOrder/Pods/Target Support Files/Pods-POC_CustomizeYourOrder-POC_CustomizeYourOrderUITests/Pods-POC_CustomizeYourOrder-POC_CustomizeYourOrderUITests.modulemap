@@ -1,0 +1,6 @@
+framework module Pods_POC_CustomizeYourOrder_POC_CustomizeYourOrderUITests {
+  umbrella header "Pods-POC_CustomizeYourOrder-POC_CustomizeYourOrderUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
