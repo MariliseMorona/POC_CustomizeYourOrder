@@ -95,10 +95,10 @@
 		1656D18D2AFEA9D0005C72C9 /* POC_CustomizeYourOrder */ = {
 			isa = PBXGroup;
 			children = (
-				1656D18E2AFEA9D0005C72C9 /* AppDelegate.swift */,
-				1656D1922AFEA9D0005C72C9 /* ViewController.swift */,
-				1656D1972AFEA9D2005C72C9 /* Assets.xcassets */,
-				1656D1992AFEA9D2005C72C9 /* LaunchScreen.storyboard */,
+				1656D1C32AFEAC1D005C72C9 /* UI */,
+				1656D1C02AFEABDF005C72C9 /* Domain */,
+				1656D1BF2AFEABC5005C72C9 /* Core */,
+				1656D1BE2AFEAB54005C72C9 /* Commons */,
 				1656D19C2AFEA9D2005C72C9 /* Info.plist */,
 			);
 			path = POC_CustomizeYourOrder;
@@ -119,6 +119,78 @@
 				1656D1B12AFEA9D2005C72C9 /* POC_CustomizeYourOrderUITestsLaunchTests.swift */,
 			);
 			path = POC_CustomizeYourOrderUITests;
+			sourceTree = "<group>";
+		};
+		1656D1BE2AFEAB54005C72C9 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				1656D1C22AFEAC02005C72C9 /* Resources */,
+				1656D1C12AFEABEB005C72C9 /* Extensions */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		1656D1BF2AFEABC5005C72C9 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				1656D18E2AFEA9D0005C72C9 /* AppDelegate.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		1656D1C02AFEABDF005C72C9 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		1656D1C12AFEABEB005C72C9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1656D1C22AFEAC02005C72C9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1656D1972AFEA9D2005C72C9 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1656D1C32AFEAC1D005C72C9 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				1656D1C62AFEAC67005C72C9 /* OrderItem */,
+				1656D1C52AFEAC5E005C72C9 /* Components */,
+				1656D1C42AFEAC28005C72C9 /* LaunchScreen */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		1656D1C42AFEAC28005C72C9 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				1656D1992AFEA9D2005C72C9 /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		1656D1C52AFEAC5E005C72C9 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		1656D1C62AFEAC67005C72C9 /* OrderItem */ = {
+			isa = PBXGroup;
+			children = (
+				1656D1922AFEA9D0005C72C9 /* ViewController.swift */,
+			);
+			path = OrderItem;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
