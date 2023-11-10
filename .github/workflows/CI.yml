@@ -22,7 +22,7 @@ jobs:
       
     - name: Install CocoaPods
       run:
-        gem install cocoapods -v latest
+        gem install cocoapods -v 1.10.1
         pod install
         
     - name: Build and Test
