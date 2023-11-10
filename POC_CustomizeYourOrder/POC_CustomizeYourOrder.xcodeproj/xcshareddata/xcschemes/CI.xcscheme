@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1656D1A02AFEA9D2005C72C9"
+               BuildableName = "POC_CustomizeYourOrderTests.xctest"
+               BlueprintName = "POC_CustomizeYourOrderTests"
+               ReferencedContainer = "container:POC_CustomizeYourOrder.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
