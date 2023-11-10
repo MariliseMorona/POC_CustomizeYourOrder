@@ -20,6 +20,20 @@
                ReferencedContainer = "container:POC_CustomizeYourOrder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1656D1A02AFEA9D2005C72C9"
+               BuildableName = "POC_CustomizeYourOrderTests.xctest"
+               BlueprintName = "POC_CustomizeYourOrderTests"
+               ReferencedContainer = "container:POC_CustomizeYourOrder.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
