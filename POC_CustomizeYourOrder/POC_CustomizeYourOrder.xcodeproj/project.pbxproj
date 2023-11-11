@@ -23,6 +23,17 @@
 		1656D1DE2AFF8DDD005C72C9 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1656D1DB2AFF8DDD005C72C9 /* Nunito-ExtraBold.ttf */; };
 		1656D1E02AFF8DE9005C72C9 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1656D1DF2AFF8DE9005C72C9 /* Nunito-Regular.ttf */; };
 		1656D1E22AFF90E7005C72C9 /* UIFont+Nunito.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656D1E12AFF90E7005C72C9 /* UIFont+Nunito.swift */; };
+		1656D1E62AFF9E0A005C72C9 /* Colors+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656D1E52AFF9E0A005C72C9 /* Colors+Extensions.swift */; };
+		1656D1E92AFFA064005C72C9 /* QuantifySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656D1E82AFFA064005C72C9 /* QuantifySectionView.swift */; };
+		1656D1EB2AFFA58F005C72C9 /* SizeSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656D1EA2AFFA58F005C72C9 /* SizeSectionView.swift */; };
+		1656D1ED2AFFB163005C72C9 /* DrinkSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656D1EC2AFFB163005C72C9 /* DrinkSectionView.swift */; };
+		1656D1EF2AFFB46A005C72C9 /* QuantifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656D1EE2AFFB46A005C72C9 /* QuantifyView.swift */; };
+		1656D1F12AFFBF27005C72C9 /* CutlerySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656D1F02AFFBF27005C72C9 /* CutlerySectionView.swift */; };
+		1656D1F52AFFC1EF005C72C9 /* MoreSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656D1F42AFFC1EF005C72C9 /* MoreSectionView.swift */; };
+		1656D1F92AFFC49D005C72C9 /* ObservationSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656D1F82AFFC49D005C72C9 /* ObservationSectionView.swift */; };
+		1656D1FB2AFFC8A0005C72C9 /* FooterSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656D1FA2AFFC8A0005C72C9 /* FooterSectionView.swift */; };
+		1656D1FD2AFFD6EF005C72C9 /* SectionDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656D1FC2AFFD6EF005C72C9 /* SectionDividerView.swift */; };
+		1656D1FF2AFFD8E5005C72C9 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656D1FE2AFFD8E5005C72C9 /* NavigationView.swift */; };
 		3537900209001EDDA38BA4E6 /* Pods_POC_CustomizeYourOrderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69E86A59F648438D2A42FFAF /* Pods_POC_CustomizeYourOrderTests.framework */; };
 		B4C3E637A85538BC1062D491 /* Pods_POC_CustomizeYourOrder_POC_CustomizeYourOrderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67599763B224DBE702848349 /* Pods_POC_CustomizeYourOrder_POC_CustomizeYourOrderUITests.framework */; };
 		D5AAE0612CE334B1087B3A95 /* Pods_POC_CustomizeYourOrder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7953352F44186FCB5A687965 /* Pods_POC_CustomizeYourOrder.framework */; };
@@ -69,6 +80,17 @@
 		1656D1DB2AFF8DDD005C72C9 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-ExtraBold.ttf"; path = "../../../../../../../../../Downloads/Nunito/static/Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
 		1656D1DF2AFF8DE9005C72C9 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Regular.ttf"; path = "../../../../../../../../../Downloads/Nunito/static/Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		1656D1E12AFF90E7005C72C9 /* UIFont+Nunito.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Nunito.swift"; sourceTree = "<group>"; };
+		1656D1E52AFF9E0A005C72C9 /* Colors+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+Extensions.swift"; sourceTree = "<group>"; };
+		1656D1E82AFFA064005C72C9 /* QuantifySectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantifySectionView.swift; sourceTree = "<group>"; };
+		1656D1EA2AFFA58F005C72C9 /* SizeSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeSectionView.swift; sourceTree = "<group>"; };
+		1656D1EC2AFFB163005C72C9 /* DrinkSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkSectionView.swift; sourceTree = "<group>"; };
+		1656D1EE2AFFB46A005C72C9 /* QuantifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuantifyView.swift; sourceTree = "<group>"; };
+		1656D1F02AFFBF27005C72C9 /* CutlerySectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutlerySectionView.swift; sourceTree = "<group>"; };
+		1656D1F42AFFC1EF005C72C9 /* MoreSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreSectionView.swift; sourceTree = "<group>"; };
+		1656D1F82AFFC49D005C72C9 /* ObservationSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationSectionView.swift; sourceTree = "<group>"; };
+		1656D1FA2AFFC8A0005C72C9 /* FooterSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterSectionView.swift; sourceTree = "<group>"; };
+		1656D1FC2AFFD6EF005C72C9 /* SectionDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionDividerView.swift; sourceTree = "<group>"; };
+		1656D1FE2AFFD8E5005C72C9 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
 		67599763B224DBE702848349 /* Pods_POC_CustomizeYourOrder_POC_CustomizeYourOrderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_POC_CustomizeYourOrder_POC_CustomizeYourOrderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		69E86A59F648438D2A42FFAF /* Pods_POC_CustomizeYourOrderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_POC_CustomizeYourOrderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70C28E5679813FBA0029C5F6 /* Pods-POC_CustomizeYourOrder-POC_CustomizeYourOrderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POC_CustomizeYourOrder-POC_CustomizeYourOrderUITests.debug.xcconfig"; path = "Target Support Files/Pods-POC_CustomizeYourOrder-POC_CustomizeYourOrderUITests/Pods-POC_CustomizeYourOrder-POC_CustomizeYourOrderUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -186,6 +208,7 @@
 			children = (
 				1656D1D62AFF2C2E005C72C9 /* String+Extension.swift */,
 				1656D1E12AFF90E7005C72C9 /* UIFont+Nunito.swift */,
+				1656D1E52AFF9E0A005C72C9 /* Colors+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -222,6 +245,8 @@
 			isa = PBXGroup;
 			children = (
 				1656D1D42AFF284D005C72C9 /* TitleSectionView.swift */,
+				1656D1EE2AFFB46A005C72C9 /* QuantifyView.swift */,
+				1656D1FE2AFFD8E5005C72C9 /* NavigationView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -229,6 +254,7 @@
 		1656D1C62AFEAC67005C72C9 /* OrderItem */ = {
 			isa = PBXGroup;
 			children = (
+				1656D1E72AFFA050005C72C9 /* Sections */,
 				1656D1922AFEA9D0005C72C9 /* OrderViewController.swift */,
 				1656D1C72AFEE677005C72C9 /* OrderView.swift */,
 			);
@@ -251,6 +277,21 @@
 				1656D1DA2AFF8DDD005C72C9 /* Nunito-SemiBold.ttf */,
 			);
 			path = fonts;
+			sourceTree = "<group>";
+		};
+		1656D1E72AFFA050005C72C9 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				1656D1E82AFFA064005C72C9 /* QuantifySectionView.swift */,
+				1656D1EA2AFFA58F005C72C9 /* SizeSectionView.swift */,
+				1656D1EC2AFFB163005C72C9 /* DrinkSectionView.swift */,
+				1656D1F02AFFBF27005C72C9 /* CutlerySectionView.swift */,
+				1656D1F42AFFC1EF005C72C9 /* MoreSectionView.swift */,
+				1656D1F82AFFC49D005C72C9 /* ObservationSectionView.swift */,
+				1656D1FA2AFFC8A0005C72C9 /* FooterSectionView.swift */,
+				1656D1FC2AFFD6EF005C72C9 /* SectionDividerView.swift */,
+			);
+			path = Sections;
 			sourceTree = "<group>";
 		};
 		34A5A74A7AC92141116A18C2 /* Frameworks */ = {
@@ -519,12 +560,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				1656D1C82AFEE677005C72C9 /* OrderView.swift in Sources */,
+				1656D1FB2AFFC8A0005C72C9 /* FooterSectionView.swift in Sources */,
+				1656D1EF2AFFB46A005C72C9 /* QuantifyView.swift in Sources */,
+				1656D1F92AFFC49D005C72C9 /* ObservationSectionView.swift in Sources */,
 				1656D1E22AFF90E7005C72C9 /* UIFont+Nunito.swift in Sources */,
+				1656D1F52AFFC1EF005C72C9 /* MoreSectionView.swift in Sources */,
+				1656D1F12AFFBF27005C72C9 /* CutlerySectionView.swift in Sources */,
+				1656D1FD2AFFD6EF005C72C9 /* SectionDividerView.swift in Sources */,
 				1656D1CA2AFEE76F005C72C9 /* CodableView.swift in Sources */,
+				1656D1E92AFFA064005C72C9 /* QuantifySectionView.swift in Sources */,
+				1656D1FF2AFFD8E5005C72C9 /* NavigationView.swift in Sources */,
 				1656D1932AFEA9D0005C72C9 /* OrderViewController.swift in Sources */,
 				1656D18F2AFEA9D0005C72C9 /* AppDelegate.swift in Sources */,
+				1656D1ED2AFFB163005C72C9 /* DrinkSectionView.swift in Sources */,
 				1656D1D72AFF2C2E005C72C9 /* String+Extension.swift in Sources */,
+				1656D1EB2AFFA58F005C72C9 /* SizeSectionView.swift in Sources */,
 				1656D1D52AFF284D005C72C9 /* TitleSectionView.swift in Sources */,
+				1656D1E62AFF9E0A005C72C9 /* Colors+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

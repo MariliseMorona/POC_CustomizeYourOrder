@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         let vc = OrderViewController()
         let navigation = UINavigationController(rootViewController: vc)
+        navigation.navigationBar.backgroundColor = UIColor.purple
         window?.makeKeyAndVisible()
         window?.rootViewController = navigation
         
