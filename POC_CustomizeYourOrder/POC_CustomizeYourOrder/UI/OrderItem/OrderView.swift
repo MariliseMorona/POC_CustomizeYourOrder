@@ -10,6 +10,11 @@ import SnapKit
 
 class OrderView: UIView {
     
+    lazy var scrollView: UIScrollView = {
+        let view = UIScrollView()
+        return view
+    }()
+    
     lazy var containerView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -24,20 +29,10 @@ class OrderView: UIView {
     }()
     
     //MARK: TITLE
-    lazy var titleItem: UILabel = {
-       let label = UILabel()
-        label.text = "Ceviche de salmão a patir de R$ 19,90 salmão temperado com limão, cebola e pimenta"
-        label.numberOfLines = 0
-        return label
-    }()
+    lazy var titleItem = TitleSectionView()
     
     //MARK: QUANTIFY
-    lazy var quantifyItem: UILabel = {
-       let label = UILabel()
-        label.text = "quantos? total R$ 29,90"
-        label.numberOfLines = 0
-        return label
-    }()
+    lazy var quantifyItem = TitleSectionView()
     
     lazy var stackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [decreaseItem, qtdItem, addItem])
@@ -80,7 +75,6 @@ class OrderView: UIView {
         stack.distribution = .equalSpacing
         return stack
     }()
-    
     lazy var sizeItem = TitleSectionView()
     
     lazy var mandatory: UILabel = {
@@ -150,12 +144,7 @@ class OrderView: UIView {
     }()
     
     //MARK: DRINK
-    lazy var drinkItem: UILabel = {
-       let label = UILabel()
-        label.text = "vai querer bebida? escolha quantas quiser"
-        label.numberOfLines = 1
-        return label
-    }()
+    lazy var drinkItem = TitleSectionView()
     
     lazy var drinkCocaStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [decreaseCocaItem, qtdCocaItem, addCocaItem])
@@ -290,13 +279,8 @@ class OrderView: UIView {
     }()
     
     //MARK: TALHER
-    lazy var talherItem: UILabel = {
-       let label = UILabel()
-        label.text = "precida de talher? escolha até 1"
-        label.numberOfLines = 1
-        return label
-    }()
-    
+    lazy var talherItem = TitleSectionView()
+
     lazy var hashiRadioButton: UIButton = {
         let btn = UIButton()
          btn.backgroundColor = .blue
@@ -342,12 +326,7 @@ class OrderView: UIView {
     }()
     
     //MARK: More Items
-    lazy var moreItem: UILabel = {
-       let label = UILabel()
-        label.text = "mais alguma coisa? escolha até 2"
-        label.numberOfLines = 1
-        return label
-    }()
+    lazy var moreItem = TitleSectionView()
     
     lazy var cookieRadioButton: UIButton = {
         let btn = UIButton()
@@ -446,7 +425,8 @@ class OrderView: UIView {
 
 extension OrderView: CodableView {
     func buildViews() {
-        addSubview(containerView)
+        addSubview(scrollView)
+        scrollView.addSubview(containerView)
         containerView.addSubview(imageItem)
         containerView.addSubview(titleItem)
         containerView.addSubview(quantifyItem)
@@ -495,8 +475,11 @@ extension OrderView: CodableView {
     }
     
     func configConstraints() {
-        containerView.snp.makeConstraints { make in
+        scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
+        }
+        containerView.snp.makeConstraints { make in
+            make.top.bottom.width.equalTo(scrollView)
         }
         imageItem.snp.makeConstraints { make in
             make.top.equalTo(containerView.snp.top).inset(26)
@@ -533,6 +516,7 @@ extension OrderView: CodableView {
         stackSizeView.snp.makeConstraints { make in
             make.top.equalTo(separatorView.snp.bottom)
             make.leading.trailing.equalTo(containerView)
+            make.height.equalTo(100)
         }
         middleRadioButton.snp.makeConstraints { make in
             make.top.equalTo(stackSizeView.snp.bottom)
@@ -601,6 +585,7 @@ extension OrderView: CodableView {
         drinkPratsStackView.snp.makeConstraints { make in
             make.top.equalTo(drinkCocaStackView.snp.bottom).offset(8)
             make.leading.equalTo(containerView)
+            make.height.equalTo(100)
         }
         decreasePratsItem.snp.makeConstraints { make in
             make.height.width.equalTo(30)
@@ -623,6 +608,7 @@ extension OrderView: CodableView {
         drinkWaterStackView.snp.makeConstraints { make in
             make.top.equalTo(drinkPratsStackView.snp.bottom).offset(8)
             make.leading.equalTo(containerView)
+            make.height.equalTo(100)
         }
         decreaseWaterItem.snp.makeConstraints { make in
             make.height.width.equalTo(30)
@@ -726,7 +712,6 @@ extension OrderView: CodableView {
             make.top.equalTo(containerTextView.snp.bottom)
             make.leading.trailing.equalTo(containerView)
             make.height.equalTo(100)
-//            make.bottom.equalTo(containerView.snp.bottom).inset(26)
         }
         footerLabel.snp.makeConstraints { make in
             make.top.leading.trailing.equalTo(footerView)
@@ -734,14 +719,51 @@ extension OrderView: CodableView {
         footerButton.snp.makeConstraints { make in
             make.top.equalTo(footerLabel.snp.bottom)
             make.leading.trailing.bottom.equalTo(containerView).inset(26)
-//            make.height.equalTo(60)
+            make.height.equalTo(60)
             
         }
     }
     
     func configViews() {
-        let html = "<center>qual o tamanho? <b></b> escolha 1</center>"
-        let attributedString = NSAttributedString(html: html)
-        sizeItem.title = attributedString
+        
+        let htmlTitle = """
+                   <span style="font-family: Nunito-Bold; font-size: 16pt;">Ceviche de salmão</span><br>
+                   <span style="font-family: Nunito-Bold; font-size: 12pt;">a patir de</span>
+                   <span style="font-family: Nunito-Bold; font-size: 12pt;">R$ 19,90</span><br>
+                   <span style="font-family: Nunito-Bold; font-size: 12pt;">salmão temperado com limão, cebola e pimenta</span>
+               """
+        titleItem.title =  NSAttributedString(html: htmlTitle)
+        
+        let htmlSize = """
+                   <span style="font-family: Nunito-Bold; font-size: 16pt;">qual o tamanho?</span><br>
+                   <span style="font-family: Nunito-Bold; font-size: 12pt;">escolha 1</span>
+               """
+        sizeItem.title =  NSAttributedString(html: htmlSize)
+        
+        
+        let htmlQuantify = """
+                   <span style="font-family: Nunito-Bold; font-size: 16pt;">quantos?</span><br>
+                   <span style="font-family: Nunito-Bold; font-size: 12pt;">total R$ 29,90</span>
+               """
+        quantifyItem.title =  NSAttributedString(html: htmlQuantify)
+        
+        let htmlDrink = """
+                   <span style="font-family: Nunito-Bold; font-size: 16pt;">vai querer bebida?</span><br>
+                   <span style="font-family: Nunito-Bold; font-size: 12pt;">escolha quantas quiser</span>
+               """
+        drinkItem.title =  NSAttributedString(html: htmlDrink)
+        
+        let htmlFork = """
+                   <span style="font-family: Nunito-Bold; font-size: 16pt;">precida de talher? </span><br>
+                   <span style="font-family: Nunito-Bold; font-size: 12pt;">escolha até 1</span>
+               """
+        talherItem.title =  NSAttributedString(html: htmlFork)
+        
+        let htmlMore = """
+                   <span style="font-family: Nunito-Bold; font-size: 16pt;">mais alguma coisa? </span><br>
+                   <span style="font-family: Nunito-Bold; font-size: 12pt;">escolha até 2</span>
+               """
+        moreItem.title =  NSAttributedString(html: htmlMore)
+     
     }
 }

@@ -18,8 +18,8 @@ class TitleSectionView: UIView {
     
     lazy var textLabel: UILabel = {
        let label = UILabel()
-        label.text = "qual o tamanho? escolha 1"
-        label.numberOfLines = 1
+        label.font = UIFont.nunitoBold12
+        label.numberOfLines = 0
         return label
     }()
     
