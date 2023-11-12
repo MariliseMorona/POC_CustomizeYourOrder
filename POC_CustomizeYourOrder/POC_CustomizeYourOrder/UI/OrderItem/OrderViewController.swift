@@ -19,6 +19,20 @@ class OrderViewController: UIViewController {
         }
     }
     
+    private var selectedCookieBtn: Bool = false
+    var cookieBtn: Bool = false {
+        didSet {
+            selectedCookieBtn = cookieBtn
+        }
+    }
+    
+    private var selectedRollBtn: Bool = false
+    var rollBtn: Bool = false {
+        didSet {
+            selectedRollBtn = rollBtn
+        }
+    }
+    
     private let minLimitItem = 0
     private let limitItemForTrash = 1
     
@@ -74,6 +88,7 @@ class OrderViewController: UIViewController {
         fetchedQuantifyView()
         fetchedDrinkView()
         fetchedCutleryView()
+        fetchedMoreView()
         
     }
 }
@@ -193,6 +208,13 @@ extension OrderViewController {
         sender.tag == orderView.cutleryItem.hashiView.addItem.tag ? (orderView.cutleryItem.hashiView.addItem.setImage(UIImage(named: "selectedRadioBtn"), for: .normal)) : (orderView.cutleryItem.hashiView.addItem.setImage(UIImage(named: "deselectedRadioBtn"), for: .normal))
         sender.tag == orderView.cutleryItem.forkView.addItem.tag ? (orderView.cutleryItem.forkView.addItem.setImage(UIImage(named: "selectedRadioBtn"), for: .normal)) : (orderView.cutleryItem.forkView.addItem.setImage(UIImage(named: "deselectedRadioBtn"), for: .normal))
     }
+    
+    @objc private func tappedCheckBox(sender: UIButton) {
+        sender.tag == orderView.moreItem.cookieView.addItem.tag ? (cookieBtn = !selectedCookieBtn) : (rollBtn = !selectedRollBtn)
+        
+        selectedRollBtn == true ? orderView.moreItem.rollView.addItem.setImage(UIImage(named: "checkedBox"), for: .normal) : orderView.moreItem.rollView.addItem.setImage(UIImage(named: "uncheckedBox"), for: .normal)
+        selectedCookieBtn == true ? orderView.moreItem.cookieView.addItem.setImage(UIImage(named: "checkedBox"), for: .normal) : orderView.moreItem.cookieView.addItem.setImage(UIImage(named: "uncheckedBox"), for: .normal)
+    }
 }
 
 extension OrderViewController {
@@ -264,5 +286,10 @@ extension OrderViewController {
     fileprivate func fetchedCutleryView() {
         orderView.cutleryItem.hashiView.addItem.addTarget(self, action: #selector(tappedCutleryRadioBtn), for: .touchUpInside)
         orderView.cutleryItem.forkView.addItem.addTarget(self, action: #selector(tappedCutleryRadioBtn), for: .touchUpInside)
+    }
+    
+    fileprivate func fetchedMoreView() {
+        orderView.moreItem.cookieView.addItem.addTarget(self, action: #selector(tappedCheckBox), for: .touchUpInside)
+        orderView.moreItem.rollView.addItem.addTarget(self, action: #selector(tappedCheckBox), for: .touchUpInside)
     }
 }

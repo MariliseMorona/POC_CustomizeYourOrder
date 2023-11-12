@@ -13,6 +13,7 @@ class MoreSectionView: UIView {
     lazy var cookieView: QuantifyView = {
         let stack = QuantifyView()
         stack.stackView.addArrangedSubview(stack.addItem)
+        stack.addItem.tag = 0
         return stack
     }()
     
@@ -38,6 +39,7 @@ class MoreSectionView: UIView {
     lazy var rollView: QuantifyView = {
         let stack = QuantifyView()
         stack.stackView.addArrangedSubview(stack.addItem)
+        stack.addItem.tag = 1
         return stack
     }()
 
