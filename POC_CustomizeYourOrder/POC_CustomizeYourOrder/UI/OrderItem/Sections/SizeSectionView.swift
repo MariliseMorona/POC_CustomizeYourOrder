@@ -9,14 +9,19 @@ import UIKit
 
 class SizeSectionView: UIView {
     
-//    var title: NSAttributedString? {
-//        didSet {
-//            textLabel.attributedText = title
-//        }
-//    }
+    var title: NSAttributedString? {
+        didSet {
+            titleView.title = title
+        }
+    }
+    
+    var middleValue: NSAttributedString? {
+        didSet {
+            valueMiddleLabel.attributedText = middleValue
+        }
+    }
     
     lazy var titleView = TitleSectionView()
-    
     
     lazy var mandatory: UILabel = {
        let label = UILabel()
@@ -32,8 +37,9 @@ class SizeSectionView: UIView {
     
     lazy var middleRadioButton: UIButton = {
         let btn = UIButton()
-         btn.backgroundColor = .blue
-         return btn
+        btn.tag = 1
+        btn.setImage(UIImage(named: "deselectedRadioBtn"), for: .normal)
+        return btn
     }()
     
     lazy var imageMoney: UIImageView = {
@@ -61,8 +67,9 @@ class SizeSectionView: UIView {
     
     lazy var largeRadioButton: UIButton = {
         let btn = UIButton()
-         btn.backgroundColor = .green
-         return btn
+        btn.tag = 2
+        btn.setImage(UIImage(named: "deselectedRadioBtn"), for: .normal)
+        return btn
     }()
     
     lazy var largeLabel: UILabel = {
@@ -153,28 +160,4 @@ extension SizeSectionView: CodableView {
             make.bottom.equalToSuperview().inset(16)
         }
     }
-    func configViews() {
-        let htmlValueMiddle = """
-                    <span style="font-family: Nunito-Bold; font-size: 12pt;">
-                                de R$ 22,90 por
-                    </span><br>
-                    <span style="font-family: Nunito-Bold; font-size: 14pt; color: #O2A117";>
-                                R$ 19,90
-                    </span>
-               """
-        
-        valueMiddleLabel.attributedText = NSAttributedString(html: htmlValueMiddle)
-        
-        let htmlSize = """
-                    <span style="font-family: Nunito-Bold; font-size: 16pt;">
-                        qual o tamanho?
-                    </span><br>
-                    <span style="font-family: Nunito-Bold; font-size: 12pt; color: #6D6F73">
-                        escolha 1
-                    </span>
-               """
-        titleView.title =  NSAttributedString(html: htmlSize)
-    }
-    
 }
-
