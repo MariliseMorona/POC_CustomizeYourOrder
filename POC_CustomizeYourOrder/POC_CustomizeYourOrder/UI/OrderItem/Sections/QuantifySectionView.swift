@@ -9,6 +9,25 @@ import UIKit
 
 class QuantifySectionView: UIView {
     
+    private var privatePresentBtn: Bool = true
+    var presentButton: Bool {
+        get { return privatePresentBtn }
+        set {
+            privatePresentBtn = newValue
+            for subview in subviews {
+                subview.removeFromSuperview()
+            }
+            setupViews()
+        }
+    }
+    private var privateCount: Int = -1
+    var count: Int = 0 {
+        didSet {
+            privateCount = count
+            quantifyView.qtdItem.text = String(privateCount)
+        }
+    }
+    
 //    var title: NSAttributedString? {
 //        didSet {
 //            textLabel.attributedText = title
@@ -18,9 +37,6 @@ class QuantifySectionView: UIView {
     lazy var titleView = TitleSectionView()
     lazy var quantifyView: QuantifyView = {
         let stack = QuantifyView()
-        stack.stackView.addArrangedSubview(stack.addItem)
-        stack.stackView.addArrangedSubview(stack.qtdItem)
-        stack.stackView.addArrangedSubview(stack.decreaseItem)
         return stack
     }()
     
@@ -38,6 +54,13 @@ extension QuantifySectionView: CodableView {
     func buildViews() {
         addSubview(titleView)
         addSubview(quantifyView)
+        if privatePresentBtn == true {
+            quantifyView.stackView.addArrangedSubview(quantifyView.defaultAddBtn)
+        } else {
+            quantifyView.stackView.addArrangedSubview(quantifyView.decreaseItem)
+            quantifyView.stackView.addArrangedSubview(quantifyView.qtdItem)
+            quantifyView.stackView.addArrangedSubview(quantifyView.addItem)
+        }
     }
     
     func configConstraints() {
@@ -50,6 +73,7 @@ extension QuantifySectionView: CodableView {
         }
     }
     func configViews() {
+        
         let htmlQuantify = """
                     <span style="font-family: Nunito-Bold; font-size: 16pt;">
                         quantos?

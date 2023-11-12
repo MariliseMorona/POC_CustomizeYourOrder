@@ -13,6 +13,8 @@ class CutlerySectionView: UIView {
     lazy var hashiView: QuantifyView = {
         let stack = QuantifyView()
         stack.stackView.addArrangedSubview(stack.addItem)
+        stack.addItem.tag = 0
+        stack.addItem.setImage(UIImage(named: "deselectedRadioBtn"), for: .normal)
         return stack
     }()
     
@@ -28,6 +30,8 @@ class CutlerySectionView: UIView {
     lazy var forkView: QuantifyView = {
         let stack = QuantifyView()
         stack.stackView.addArrangedSubview(stack.addItem)
+        stack.addItem.setImage(UIImage(named: "deselectedRadioBtn"), for: .normal)
+        stack.addItem.tag = 1
         return stack
     }()
 

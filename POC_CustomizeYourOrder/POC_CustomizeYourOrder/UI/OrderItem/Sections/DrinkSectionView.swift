@@ -9,6 +9,30 @@ import UIKit
 
 class DrinkSectionView: UIView {
     
+    private var privateFirstCount: Int = -1
+    var firstCount: Int = 0 {
+        didSet {
+            privateFirstCount = firstCount
+            quantifyFirstDrinkView.qtdItem.text = String(privateFirstCount)
+        }
+    }
+    
+    private var privateSecondCount: Int = -1
+    var secondCount: Int = 0 {
+        didSet {
+            privateSecondCount = secondCount
+            quantifySecondDrinkView.qtdItem.text = String(privateSecondCount)
+        }
+    }
+    
+    private var privateThirdCount: Int = -1
+    var thirdCount: Int = 0 {
+        didSet {
+            privateThirdCount = thirdCount
+            quantifyThirdDrinkView.qtdItem.text = String(privateThirdCount)
+        }
+    }
+    
 //    var title: NSAttributedString? {
 //        didSet {
 //            textLabel.attributedText = title
@@ -18,23 +42,29 @@ class DrinkSectionView: UIView {
     lazy var titleView = TitleSectionView()
     lazy var quantifyFirstDrinkView: QuantifyView = {
         let stack = QuantifyView()
-        stack.stackView.addArrangedSubview(stack.addItem)
-        stack.stackView.addArrangedSubview(stack.qtdItem)
         stack.stackView.addArrangedSubview(stack.decreaseItem)
+        stack.decreaseItem.tag = 0
+        stack.stackView.addArrangedSubview(stack.qtdItem)
+        stack.stackView.addArrangedSubview(stack.addItem)
+        stack.addItem.tag = 0
         return stack
     }()
     lazy var quantifySecondDrinkView: QuantifyView = {
         let stack = QuantifyView()
-        stack.stackView.addArrangedSubview(stack.addItem)
-        stack.stackView.addArrangedSubview(stack.qtdItem)
         stack.stackView.addArrangedSubview(stack.decreaseItem)
+        stack.decreaseItem.tag = 1
+        stack.stackView.addArrangedSubview(stack.qtdItem)
+        stack.stackView.addArrangedSubview(stack.addItem)
+        stack.addItem.tag = 1
         return stack
     }()
     lazy var quantifyThirdDrinkView: QuantifyView = {
         let stack = QuantifyView()
-        stack.stackView.addArrangedSubview(stack.addItem)
-        stack.stackView.addArrangedSubview(stack.qtdItem)
         stack.stackView.addArrangedSubview(stack.decreaseItem)
+        stack.decreaseItem.tag = 2
+        stack.stackView.addArrangedSubview(stack.qtdItem)
+        stack.stackView.addArrangedSubview(stack.addItem)
+        stack.addItem.tag = 2
         return stack
     }()
     

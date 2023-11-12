@@ -10,7 +10,6 @@ import UIKit
 class FooterSectionView: UIView {
     
     private var privatePresentBtn: Bool = false
-        
     var presentButton: Bool {
         get { return privatePresentBtn }
         set {
