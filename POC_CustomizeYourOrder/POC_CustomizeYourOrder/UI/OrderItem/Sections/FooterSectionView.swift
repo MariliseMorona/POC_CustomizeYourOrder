@@ -41,7 +41,7 @@ class FooterSectionView: UIView {
         let btn = UIButton()
         btn.backgroundColor = UIColor.purple
         btn.layer.cornerRadius = 8
-        btn.setTitle("ver ticket", for: .normal)
+        btn.setTitle(Strings.ticket.text, for: .normal)
         btn.tintColor = .white
         btn.titleLabel?.font = UIFont.nunitoBold16
         return btn

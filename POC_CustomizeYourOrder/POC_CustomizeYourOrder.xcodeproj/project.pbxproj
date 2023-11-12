@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16363BB52B00E12C00644E84 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16363BB42B00E12B00644E84 /* OrderViewModel.swift */; };
+		16363BB72B00E1D000644E84 /* OrderViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16363BB62B00E1D000644E84 /* OrderViewProtocols.swift */; };
+		16363BBD2B00E49600644E84 /* OrderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16363BBC2B00E49600644E84 /* OrderModels.swift */; };
+		16363BBF2B00F8CC00644E84 /* OrderViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16363BBE2B00F8CC00644E84 /* OrderViewFactory.swift */; };
+		16363BC12B0113FD00644E84 /* SizeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16363BC02B0113FD00644E84 /* SizeModel.swift */; };
+		16363BC32B0158E300644E84 /* DrinkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16363BC22B0158E300644E84 /* DrinkModel.swift */; };
+		16363BC52B0177E100644E84 /* CutleryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16363BC42B0177E100644E84 /* CutleryModels.swift */; };
+		16363BC72B017B1800644E84 /* MoreItensModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16363BC62B017B1800644E84 /* MoreItensModel.swift */; };
+		16363BC92B01812C00644E84 /* ErrorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16363BC82B01812C00644E84 /* ErrorModel.swift */; };
+		16363BCB2B01843500644E84 /* Image+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16363BCA2B01843500644E84 /* Image+Extensions.swift */; };
 		1656D18F2AFEA9D0005C72C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656D18E2AFEA9D0005C72C9 /* AppDelegate.swift */; };
 		1656D1932AFEA9D0005C72C9 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656D1922AFEA9D0005C72C9 /* OrderViewController.swift */; };
 		1656D1982AFEA9D2005C72C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1656D1972AFEA9D2005C72C9 /* Assets.xcassets */; };
@@ -17,7 +27,7 @@
 		1656D1C82AFEE677005C72C9 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656D1C72AFEE677005C72C9 /* OrderView.swift */; };
 		1656D1CA2AFEE76F005C72C9 /* CodableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656D1C92AFEE76F005C72C9 /* CodableView.swift */; };
 		1656D1D52AFF284D005C72C9 /* TitleSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656D1D42AFF284D005C72C9 /* TitleSectionView.swift */; };
-		1656D1D72AFF2C2E005C72C9 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656D1D62AFF2C2E005C72C9 /* String+Extension.swift */; };
+		1656D1D72AFF2C2E005C72C9 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656D1D62AFF2C2E005C72C9 /* String+Extensions.swift */; };
 		1656D1DC2AFF8DDD005C72C9 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1656D1D92AFF8DDD005C72C9 /* Nunito-Bold.ttf */; };
 		1656D1DD2AFF8DDD005C72C9 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1656D1DA2AFF8DDD005C72C9 /* Nunito-SemiBold.ttf */; };
 		1656D1DE2AFF8DDD005C72C9 /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1656D1DB2AFF8DDD005C72C9 /* Nunito-ExtraBold.ttf */; };
@@ -59,6 +69,16 @@
 /* Begin PBXFileReference section */
 		00915A23781F0BB2F761E55E /* Pods-POC_CustomizeYourOrder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POC_CustomizeYourOrder.release.xcconfig"; path = "Target Support Files/Pods-POC_CustomizeYourOrder/Pods-POC_CustomizeYourOrder.release.xcconfig"; sourceTree = "<group>"; };
 		05445939AC187F367DAFCAE2 /* Pods-POC_CustomizeYourOrderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POC_CustomizeYourOrderTests.release.xcconfig"; path = "Target Support Files/Pods-POC_CustomizeYourOrderTests/Pods-POC_CustomizeYourOrderTests.release.xcconfig"; sourceTree = "<group>"; };
+		16363BB42B00E12B00644E84 /* OrderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
+		16363BB62B00E1D000644E84 /* OrderViewProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewProtocols.swift; sourceTree = "<group>"; };
+		16363BBC2B00E49600644E84 /* OrderModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModels.swift; sourceTree = "<group>"; };
+		16363BBE2B00F8CC00644E84 /* OrderViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewFactory.swift; sourceTree = "<group>"; };
+		16363BC02B0113FD00644E84 /* SizeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeModel.swift; sourceTree = "<group>"; };
+		16363BC22B0158E300644E84 /* DrinkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkModel.swift; sourceTree = "<group>"; };
+		16363BC42B0177E100644E84 /* CutleryModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutleryModels.swift; sourceTree = "<group>"; };
+		16363BC62B017B1800644E84 /* MoreItensModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreItensModel.swift; sourceTree = "<group>"; };
+		16363BC82B01812C00644E84 /* ErrorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModel.swift; sourceTree = "<group>"; };
+		16363BCA2B01843500644E84 /* Image+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extensions.swift"; sourceTree = "<group>"; };
 		163E45F3F6B0D25F7127C35E /* Pods-POC_CustomizeYourOrder-POC_CustomizeYourOrderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POC_CustomizeYourOrder-POC_CustomizeYourOrderUITests.release.xcconfig"; path = "Target Support Files/Pods-POC_CustomizeYourOrder-POC_CustomizeYourOrderUITests/Pods-POC_CustomizeYourOrder-POC_CustomizeYourOrderUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1656D18B2AFEA9D0005C72C9 /* POC_CustomizeYourOrder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = POC_CustomizeYourOrder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1656D18E2AFEA9D0005C72C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,7 +94,7 @@
 		1656D1C72AFEE677005C72C9 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		1656D1C92AFEE76F005C72C9 /* CodableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableView.swift; sourceTree = "<group>"; };
 		1656D1D42AFF284D005C72C9 /* TitleSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSectionView.swift; sourceTree = "<group>"; };
-		1656D1D62AFF2C2E005C72C9 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		1656D1D62AFF2C2E005C72C9 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		1656D1D92AFF8DDD005C72C9 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Bold.ttf"; path = "../../../../../../../../../Downloads/Nunito/static/Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		1656D1DA2AFF8DDD005C72C9 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-SemiBold.ttf"; path = "../../../../../../../../../Downloads/Nunito/static/Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 		1656D1DB2AFF8DDD005C72C9 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-ExtraBold.ttf"; path = "../../../../../../../../../Downloads/Nunito/static/Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -127,6 +147,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16363BBB2B00E47200644E84 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				16363BBC2B00E49600644E84 /* OrderModels.swift */,
+				16363BC02B0113FD00644E84 /* SizeModel.swift */,
+				16363BC22B0158E300644E84 /* DrinkModel.swift */,
+				16363BC42B0177E100644E84 /* CutleryModels.swift */,
+				16363BC62B017B1800644E84 /* MoreItensModel.swift */,
+				16363BC82B01812C00644E84 /* ErrorModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		1656D1822AFEA9D0005C72C9 = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +232,7 @@
 		1656D1C02AFEABDF005C72C9 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				16363BBB2B00E47200644E84 /* Models */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -206,9 +240,10 @@
 		1656D1C12AFEABEB005C72C9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				1656D1D62AFF2C2E005C72C9 /* String+Extension.swift */,
+				1656D1D62AFF2C2E005C72C9 /* String+Extensions.swift */,
 				1656D1E12AFF90E7005C72C9 /* UIFont+Nunito.swift */,
 				1656D1E52AFF9E0A005C72C9 /* Colors+Extensions.swift */,
+				16363BCA2B01843500644E84 /* Image+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -256,7 +291,9 @@
 			children = (
 				1656D1E72AFFA050005C72C9 /* Sections */,
 				1656D1922AFEA9D0005C72C9 /* OrderViewController.swift */,
+				16363BB42B00E12B00644E84 /* OrderViewModel.swift */,
 				1656D1C72AFEE677005C72C9 /* OrderView.swift */,
+				16363BBE2B00F8CC00644E84 /* OrderViewFactory.swift */,
 			);
 			path = OrderItem;
 			sourceTree = "<group>";
@@ -264,6 +301,7 @@
 		1656D1CD2AFEEF8F005C72C9 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				16363BB62B00E1D000644E84 /* OrderViewProtocols.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -562,18 +600,28 @@
 				1656D1C82AFEE677005C72C9 /* OrderView.swift in Sources */,
 				1656D1FB2AFFC8A0005C72C9 /* FooterSectionView.swift in Sources */,
 				1656D1EF2AFFB46A005C72C9 /* QuantifyView.swift in Sources */,
+				16363BCB2B01843500644E84 /* Image+Extensions.swift in Sources */,
 				1656D1F92AFFC49D005C72C9 /* ObservationSectionView.swift in Sources */,
 				1656D1E22AFF90E7005C72C9 /* UIFont+Nunito.swift in Sources */,
 				1656D1F52AFFC1EF005C72C9 /* MoreSectionView.swift in Sources */,
+				16363BC92B01812C00644E84 /* ErrorModel.swift in Sources */,
 				1656D1F12AFFBF27005C72C9 /* CutlerySectionView.swift in Sources */,
+				16363BB72B00E1D000644E84 /* OrderViewProtocols.swift in Sources */,
 				1656D1FD2AFFD6EF005C72C9 /* SectionDividerView.swift in Sources */,
 				1656D1CA2AFEE76F005C72C9 /* CodableView.swift in Sources */,
+				16363BC12B0113FD00644E84 /* SizeModel.swift in Sources */,
+				16363BB52B00E12C00644E84 /* OrderViewModel.swift in Sources */,
 				1656D1E92AFFA064005C72C9 /* QuantifySectionView.swift in Sources */,
+				16363BBD2B00E49600644E84 /* OrderModels.swift in Sources */,
 				1656D1FF2AFFD8E5005C72C9 /* NavigationView.swift in Sources */,
 				1656D1932AFEA9D0005C72C9 /* OrderViewController.swift in Sources */,
 				1656D18F2AFEA9D0005C72C9 /* AppDelegate.swift in Sources */,
 				1656D1ED2AFFB163005C72C9 /* DrinkSectionView.swift in Sources */,
-				1656D1D72AFF2C2E005C72C9 /* String+Extension.swift in Sources */,
+				16363BC72B017B1800644E84 /* MoreItensModel.swift in Sources */,
+				1656D1D72AFF2C2E005C72C9 /* String+Extensions.swift in Sources */,
+				16363BBF2B00F8CC00644E84 /* OrderViewFactory.swift in Sources */,
+				16363BC52B0177E100644E84 /* CutleryModels.swift in Sources */,
+				16363BC32B0158E300644E84 /* DrinkModel.swift in Sources */,
 				1656D1EB2AFFA58F005C72C9 /* SizeSectionView.swift in Sources */,
 				1656D1D52AFF284D005C72C9 /* TitleSectionView.swift in Sources */,
 				1656D1E62AFF9E0A005C72C9 /* Colors+Extensions.swift in Sources */,

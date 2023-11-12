@@ -20,7 +20,7 @@ class QuantifyView: UIView {
     
     lazy var decreaseItem: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage(named: "decreaseBtn"), for: .normal)
+        btn.setImage(UIImage.decreaseBtn, for: .normal)
         return btn
     }()
     
@@ -35,7 +35,7 @@ class QuantifyView: UIView {
     
     lazy var addItem: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage(named: "addBtn"), for: .normal)
+        btn.setImage(UIImage.addBtn, for: .normal)
         return btn
     }()
     

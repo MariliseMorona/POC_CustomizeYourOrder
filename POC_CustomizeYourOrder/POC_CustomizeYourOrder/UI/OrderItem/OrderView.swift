@@ -25,7 +25,7 @@ class OrderView: UIView {
     lazy var imageItem: UIImageView = {
         let img = UIImageView()
         img.contentMode = .scaleAspectFit
-        img.image = UIImage(named: "food")
+        img.image = UIImage.food
         return img
     }()
     

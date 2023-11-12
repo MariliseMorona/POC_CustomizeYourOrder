@@ -9,10 +9,16 @@ import UIKit
 
 class NavigationView: UIView {
     
+    var address: String = "" {
+        didSet {
+            descriptionLabel.text = address
+        }
+    }
+    
     lazy var imageLocation: UIImageView = {
         let img = UIImageView()
         img.contentMode = .scaleAspectFit
-        img.image = UIImage(named: "iconLocalization")
+        img.image = UIImage.iconLocalization
         return img
     }()
     
@@ -28,12 +34,19 @@ class NavigationView: UIView {
     
     lazy var descriptionLabel: UILabel = {
        let label = UILabel()
-        label.text = "Rua Mandaguari, 198 >"
+        label.text = "\(address) >"
         label.numberOfLines = 1
         label.textAlignment = .left
         label.font = UIFont.nunitoBold16
         label.textColor = UIColor.white
+        label.adjustsFontSizeToFitWidth = true
         return label
+    }()
+    
+    lazy var btnNavigation: UIButton = {
+        let btn = UIButton()
+        btn.backgroundColor = .clear
+        return btn
     }()
     
     override init(frame: CGRect) {
@@ -51,6 +64,7 @@ extension NavigationView: CodableView {
         addSubview(imageLocation)
         addSubview(textLabel)
         addSubview(descriptionLabel)
+        addSubview(btnNavigation)
     }
     
     func configConstraints() {
@@ -67,6 +81,9 @@ extension NavigationView: CodableView {
             make.top.equalTo(textLabel.snp.bottom)
             make.leading.equalTo(imageLocation.snp.trailing).offset(10)
             make.trailing.bottom.equalToSuperview()
+        }
+        btnNavigation.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
     

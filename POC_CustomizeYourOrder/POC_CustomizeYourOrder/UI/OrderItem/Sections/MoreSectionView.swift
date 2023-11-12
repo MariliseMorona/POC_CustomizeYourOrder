@@ -9,17 +9,22 @@ import UIKit
 
 class MoreSectionView: UIView {
     
+    var title: NSAttributedString? {
+        didSet {
+            titleView.title = title
+        }
+    }
+    
     lazy var titleView = TitleSectionView()
     lazy var cookieView: QuantifyView = {
         let stack = QuantifyView()
         stack.stackView.addArrangedSubview(stack.addItem)
-        stack.addItem.tag = 0
         return stack
     }()
     
     lazy var cookieLabel: UILabel = {
        let label = UILabel()
-        label.text = "biscoito da sorte"
+        label.text = Strings.cookie.text
         label.numberOfLines = 1
         label.font = UIFont.nunitoRegular14
         label.textColor = UIColor.gray
@@ -28,7 +33,7 @@ class MoreSectionView: UIView {
     
     lazy var valueCookieLabel: UILabel = {
        let label = UILabel()
-        label.text = "+R$ 2,00"
+        label.text = Strings.value2.text
         label.numberOfLines = 1
         label.textAlignment = .right
         label.font = UIFont.nunitoBold14
@@ -39,13 +44,12 @@ class MoreSectionView: UIView {
     lazy var rollView: QuantifyView = {
         let stack = QuantifyView()
         stack.stackView.addArrangedSubview(stack.addItem)
-        stack.addItem.tag = 1
         return stack
     }()
 
     lazy var rollLabel: UILabel = {
        let label = UILabel()
-        label.text = "rolinho primavera"
+        label.text = Strings.roll.text
         label.numberOfLines = 1
         label.font = UIFont.nunitoRegular14
         label.textColor = UIColor.gray
@@ -54,7 +58,7 @@ class MoreSectionView: UIView {
     
     lazy var valueRollLabel: UILabel = {
        let label = UILabel()
-        label.text = "+R$ 8,00"
+        label.text = Strings.value8.text
         label.numberOfLines = 1
         label.textAlignment = .right
         label.font = UIFont.nunitoBold14
@@ -113,18 +117,6 @@ extension MoreSectionView: CodableView {
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview().inset(12)
         }
-    }
-    
-    func configViews() {
-        let htmlMore = """
-                   <span style="font-family: Nunito-Bold; font-size: 16pt;">
-                        mais alguma coisa?
-                   </span><br>
-                   <span style="font-family: Nunito-Bold; font-size: 12pt; color: #6D6F73">
-                        escolha até 2
-                   </span>
-               """
-        titleView.title =  NSAttributedString(html: htmlMore)
     }
 }
 

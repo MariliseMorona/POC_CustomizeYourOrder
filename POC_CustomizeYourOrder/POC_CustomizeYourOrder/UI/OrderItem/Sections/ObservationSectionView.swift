@@ -9,6 +9,12 @@ import UIKit
 
 class ObservationSectionView: UIView {
     
+    var title: NSAttributedString? {
+        didSet {
+            containerTextView.attributedText = title
+        }
+    }
+    
     lazy var containerView: UIView = {
         let view = UIView()
         view.layer.borderColor = UIColor.gray.cgColor
@@ -60,15 +66,4 @@ extension ObservationSectionView: CodableView {
             make.edges.equalTo(containerTextView)
         }
     }
-    func configViews() {
-        let htmlObservation = """
-                   <span style="font-family: Nunito-SemiBold; font-size: 14pt; color: #6D6F73">
-                        alguma observação do item? &bull; opcional
-                   <br>
-                        ex.: tirar algum ingrediente, ponto do prato
-                   </span>
-               """
-        containerTextView.attributedText =  NSAttributedString(html: htmlObservation)
-    }
-    
 }

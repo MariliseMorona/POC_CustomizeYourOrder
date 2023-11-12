@@ -45,7 +45,7 @@ extension TitleSectionView: CodableView {
     }
     func configViews() {
         let htmlTitle = """
-                   <span style="font-family: Nunito-Bold; font-size: 16pt;">
+                   <span style="font-family: Nunito-Bold; font-size: 16pt; color: #393A3C">
                         Ceviche de salmão
                    </span><br>
                

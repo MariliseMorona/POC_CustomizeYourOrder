@@ -9,17 +9,22 @@ import UIKit
 
 class QuantifySectionView: UIView {
     
+    var title: NSAttributedString? {
+        didSet {
+            titleView.title = title
+        }
+    }
+    
     private var privatePresentBtn: Bool = true
     var presentButton: Bool {
         get { return privatePresentBtn }
         set {
             privatePresentBtn = newValue
-            for subview in subviews {
-                subview.removeFromSuperview()
-            }
+            quantifyView.stackView.subviews.forEach { $0.removeFromSuperview() }
             setupViews()
         }
     }
+
     private var privateCount: Int = -1
     var count: Int = 0 {
         didSet {
@@ -27,12 +32,6 @@ class QuantifySectionView: UIView {
             quantifyView.qtdItem.text = String(privateCount)
         }
     }
-    
-//    var title: NSAttributedString? {
-//        didSet {
-//            textLabel.attributedText = title
-//        }
-//    }
     
     lazy var titleView = TitleSectionView()
     lazy var quantifyView: QuantifyView = {
@@ -72,20 +71,4 @@ extension QuantifySectionView: CodableView {
             make.trailing.equalToSuperview()
         }
     }
-    func configViews() {
-        
-        let htmlQuantify = """
-                    <span style="font-family: Nunito-Bold; font-size: 16pt;">
-                        quantos?
-                    </span><br>
-                    <span style="font-family: Nunito-SemiBold; font-size: 14pt; color: #6D6F73">
-                        total
-                    </span>
-                    <span style="font-family: Nunito-Bold; font-size: 14pt;">
-                       R$ 29,90
-                    </span>
-               """
-        titleView.title =  NSAttributedString(html: htmlQuantify)
-    }
-    
 }

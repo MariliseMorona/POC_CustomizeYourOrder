@@ -43,34 +43,28 @@ class DrinkSectionView: UIView {
     lazy var quantifyFirstDrinkView: QuantifyView = {
         let stack = QuantifyView()
         stack.stackView.addArrangedSubview(stack.decreaseItem)
-        stack.decreaseItem.tag = 0
         stack.stackView.addArrangedSubview(stack.qtdItem)
         stack.stackView.addArrangedSubview(stack.addItem)
-        stack.addItem.tag = 0
         return stack
     }()
     lazy var quantifySecondDrinkView: QuantifyView = {
         let stack = QuantifyView()
         stack.stackView.addArrangedSubview(stack.decreaseItem)
-        stack.decreaseItem.tag = 1
         stack.stackView.addArrangedSubview(stack.qtdItem)
         stack.stackView.addArrangedSubview(stack.addItem)
-        stack.addItem.tag = 1
         return stack
     }()
     lazy var quantifyThirdDrinkView: QuantifyView = {
         let stack = QuantifyView()
         stack.stackView.addArrangedSubview(stack.decreaseItem)
-        stack.decreaseItem.tag = 2
         stack.stackView.addArrangedSubview(stack.qtdItem)
         stack.stackView.addArrangedSubview(stack.addItem)
-        stack.addItem.tag = 2
         return stack
     }()
     
     lazy var labelCocaItem: UILabel = {
        let label = UILabel()
-        label.text = "coca-cola"
+        label.text = Strings.soda.text
         label.numberOfLines = 1
         label.textAlignment = .left
         label.font = UIFont.nunitoRegular14
@@ -79,7 +73,7 @@ class DrinkSectionView: UIView {
     }()
     lazy var valueCocaItem: UILabel = {
        let label = UILabel()
-        label.text = "+R$ 10,00"
+        label.text = Strings.value10.text
         label.numberOfLines = 1
         label.font = UIFont.nunitoBold14
         label.textColor = UIColor.purple
@@ -88,7 +82,7 @@ class DrinkSectionView: UIView {
     
     lazy var labelPratsItem: UILabel = {
        let label = UILabel()
-        label.text = "suco prats laranja"
+        label.text = Strings.juice.text
         label.numberOfLines = 1
         label.textAlignment = .left
         label.font = UIFont.nunitoRegular14
@@ -97,7 +91,7 @@ class DrinkSectionView: UIView {
     }()
     lazy var valuePratsItem: UILabel = {
        let label = UILabel()
-        label.text = "+R$ 6,00"
+        label.text = Strings.value6.text
         label.numberOfLines = 1
         label.font = UIFont.nunitoBold14
         label.textColor = UIColor.purple
@@ -105,7 +99,7 @@ class DrinkSectionView: UIView {
     }()
     lazy var labelWaterItem: UILabel = {
        let label = UILabel()
-        label.text = "água sem gás"
+        label.text = Strings.water.text
         label.numberOfLines = 1
         label.textAlignment = .left
         label.font = UIFont.nunitoRegular14
@@ -115,7 +109,7 @@ class DrinkSectionView: UIView {
     
     lazy var valueWaterItem: UILabel = {
        let label = UILabel()
-        label.text = "+R$ 3,00"
+        label.text = Strings.value3.text
         label.numberOfLines = 1
         label.font = UIFont.nunitoBold14
         label.textColor = UIColor.purple
@@ -191,11 +185,11 @@ extension DrinkSectionView: CodableView {
     }
     func configViews() {
         let htmlDrink = """
-                   <span style="font-family: Nunito-Bold; font-size: 16pt;">
-                        vai querer bebida?
+                   <span style="font-family: Nunito-Bold; font-size: 16pt; color: #393A3C">
+                        \(Strings.wantDrink.text)
                    </span><br>
                    <span style="font-family: Nunito-Bold; font-size: 12pt; color: #6D6F73">
-                        escolha quantas quiser
+                        \(Strings.chooseQuantity.text)
                    </span>
                """
         titleView.title =  NSAttributedString(html: htmlDrink)
