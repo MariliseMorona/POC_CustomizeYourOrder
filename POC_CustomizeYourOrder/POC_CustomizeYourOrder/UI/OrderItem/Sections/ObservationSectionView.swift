@@ -11,7 +11,12 @@ class ObservationSectionView: UIView {
     
     var title: NSAttributedString? {
         didSet {
+            
+//            for subview in subviews {
+//                subview.removeFromSuperview()
+//            }
             containerTextView.attributedText = title
+//            setupViews()
         }
     }
     
@@ -33,6 +38,7 @@ class ObservationSectionView: UIView {
     lazy var inputTextView: UITextView = {
         let text = UITextView()
         text.backgroundColor = .clear
+        text.textColor = .clear
         return text
     }()
     
@@ -63,7 +69,8 @@ extension ObservationSectionView: CodableView {
             make.leading.trailing.equalTo(containerView).inset(12)
         }
         inputTextView.snp.makeConstraints { make in
-            make.edges.equalTo(containerTextView)
+            make.top.bottom.equalTo(containerView).inset(10)
+            make.leading.trailing.equalTo(containerView).inset(12)
         }
     }
 }

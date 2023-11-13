@@ -9,6 +9,7 @@ import Foundation
 
 
 protocol OrderViewModelProtocol: AnyObject {
+    var messageObs: String? { get set }
     var rollBtn: Bool? { get set }
     var cookieBtn: Bool? { get set }
     var selectedSection: [TypeProduct: Int]? { get set }
@@ -27,6 +28,7 @@ protocol OrderViewModelProtocol: AnyObject {
     func reduceTypeDrink(tag: Int)
     func addCutlery(tag: Int)
     func addMoreItens(tag: Int)
+    func getObservation(message: String)
 
 }
 
@@ -44,5 +46,6 @@ protocol OrderViewControllerProtocol: AnyObject {
     func changeForInativedBtn()
     func changeForChecked()
     func changeForUnchecked()
+    func updateObservation()
     
 }

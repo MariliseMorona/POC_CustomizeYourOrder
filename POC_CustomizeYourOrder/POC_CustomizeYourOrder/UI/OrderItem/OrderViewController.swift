@@ -65,6 +65,19 @@ class OrderViewController: UIViewController {
 }
 
 extension OrderViewController: OrderViewControllerProtocol {
+    func updateObservation() {
+        if let message = self.viewModel?.messageObs {
+            print("printando messageObs: \(self.viewModel?.messageObs)")
+            let htmlObservation = """
+                       <span style="font-family: Nunito-SemiBold; font-size: 14pt; color: #6D6F73">
+                            \(message)
+                       </span>
+                   """
+            orderView.observation.title = NSAttributedString(html: htmlObservation)
+        }
+        
+    }
+    
     func changeForChecked() {
         if let (key, value) = viewModel?.selectedSection?.first {
             switch key {
@@ -213,6 +226,7 @@ extension OrderViewController: OrderViewControllerProtocol {
         present(alertController, animated: true, completion: nil)
     }
 }
+
 // MARK: Actions Methods
 extension OrderViewController {
     @objc private func tappedNavigation() {
@@ -344,7 +358,6 @@ extension OrderViewController {
                         </span>
                     </p>
                 """
-        print("printando htmlAiq:\(htmlAiq)")
         orderView.footerView.footerLabel.attributedText =  NSAttributedString(html: htmlAiq)
         
         let htmlCopy = """
@@ -442,6 +455,7 @@ extension OrderViewController {
     }
     
     func fetchedObservationView(){
+        orderView.observation.inputTextView.delegate = self
         let htmlObservation = """
                    <span style="font-family: Nunito-SemiBold; font-size: 14pt; color: #6D6F73">
                         alguma observação do item? &bull; opcional
@@ -450,5 +464,26 @@ extension OrderViewController {
                    </span>
                """
         orderView.observation.title = NSAttributedString(html: htmlObservation)
+    }
+}
+
+extension OrderViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        print("printando textViewDidBeginEditing")
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if let text = textView.text {
+            self.viewModel?.getObservation(message: text)
+        }
+    }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+//            let currentText = textField.text ?? ""
+//            let prospectiveText = (currentText as NSString).replacingCharacters(in: range, with: string)
+        if let text = textView.text {
+            self.viewModel?.getObservation(message: text)
+            return true
+        }
+        return false
     }
 }

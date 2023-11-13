@@ -40,7 +40,7 @@ class OrderViewModel: OrderViewModelProtocol {
             guard let controller = controller else {
                 return
             }
-            controller.changeForPresentButton()
+            validateIfTheButtonShouldAppear()
         }
     }
     
@@ -130,7 +130,28 @@ class OrderViewModel: OrderViewModelProtocol {
         }
     }
     
+    private var privateMessageObs: String = Strings.empty.text
+    var messageObs: String? = Strings.empty.text {
+        didSet {
+            privateMessageObs = messageObs ?? Strings.empty.text
+            print("printando privateMessageObs: \(privateMessageObs)")
+            guard let controller = controller else {
+                return
+            }
+            controller.updateObservation()
+        }
+    }
+    
     //MARK: Methods
+    func validateIfTheButtonShouldAppear() {
+        guard let controller = controller else {
+            return
+        }
+        if privateCountItem > 0 && radioBtn == true {
+            controller.changeForPresentButton()
+        }
+    }
+    
     func alertChangeAddress() {
         guard let controller = controller else {
             return
@@ -152,6 +173,7 @@ class OrderViewModel: OrderViewModelProtocol {
         tag == SizeTag.middle.value ? controller.changeToSelectedRadioButton(tag: .middle) : controller.changeToDeselectedRadioButton(tag: .middle)
         tag == SizeTag.large.value ? controller.changeToSelectedRadioButton(tag: .large) : controller.changeToDeselectedRadioButton(tag: .large)
         radioBtn = true
+        validateIfTheButtonShouldAppear()
     }
     
     func addItem(tag: Int){
@@ -257,6 +279,10 @@ class OrderViewModel: OrderViewModelProtocol {
         tag == MoreItensTag.cookie.value ? (cookieBtn = !selectedCookieBtn) : (rollBtn = !selectedRollBtn)
         selectedRollBtn == true ? controller.changeForChecked() : controller.changeForUnchecked()
         selectedCookieBtn == true ? controller.changeForChecked() : controller.changeForUnchecked()
+    }
+    
+    func getObservation(message: String) {
+        messageObs = message
     }
 }
 
