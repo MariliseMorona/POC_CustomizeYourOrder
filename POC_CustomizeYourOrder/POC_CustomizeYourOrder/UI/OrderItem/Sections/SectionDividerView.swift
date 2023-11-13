@@ -37,6 +37,4 @@ extension SectionDividerView: CodableView {
             make.height.equalTo(4)
         }
     }
-    
-    
 }

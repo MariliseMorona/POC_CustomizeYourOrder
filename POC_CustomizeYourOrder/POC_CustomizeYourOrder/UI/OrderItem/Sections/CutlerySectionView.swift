@@ -9,16 +9,23 @@ import UIKit
 
 class CutlerySectionView: UIView {
     
+    var title: NSAttributedString? {
+        didSet {
+            titleView.title = title
+        }
+    }
+    
     lazy var titleView = TitleSectionView()
     lazy var hashiView: QuantifyView = {
         let stack = QuantifyView()
         stack.stackView.addArrangedSubview(stack.addItem)
+        stack.addItem.setImage(UIImage.deselectedRadioBtn, for: .normal)
         return stack
     }()
     
     lazy var hashiLabel: UILabel = {
        let label = UILabel()
-        label.text = "hashi"
+        label.text = Strings.hashi.text
         label.numberOfLines = 1
         label.font = UIFont.nunitoRegular14
         label.textColor = UIColor.gray
@@ -28,12 +35,13 @@ class CutlerySectionView: UIView {
     lazy var forkView: QuantifyView = {
         let stack = QuantifyView()
         stack.stackView.addArrangedSubview(stack.addItem)
+        stack.addItem.setImage(UIImage.deselectedRadioBtn, for: .normal)
         return stack
     }()
 
     lazy var forkLabel: UILabel = {
        let label = UILabel()
-        label.text = "garfo e faca descartável"
+        label.text = Strings.cutlery.text
         label.numberOfLines = 1
         label.font = UIFont.nunitoRegular14
         label.textColor = UIColor.gray
@@ -42,7 +50,7 @@ class CutlerySectionView: UIView {
     
     lazy var valueForkLabel: UILabel = {
        let label = UILabel()
-        label.text = "+R$ 1,00"
+        label.text = Strings.value1.text
         label.numberOfLines = 1
         label.textAlignment = .right
         label.font = UIFont.nunitoBold14
@@ -95,17 +103,5 @@ extension CutlerySectionView: CodableView {
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview().inset(12)
         }
-    }
-    
-    func configViews() {
-        let htmlFork = """
-                   <span style="font-family: Nunito-Bold; font-size: 16pt;">
-                        precisa de talher?
-                   </span><br>
-                   <span style="font-family: Nunito-Bold; font-size: 12pt; color: #6D6F73">
-                        escolha até 1
-                   </span>
-               """
-        titleView.title =  NSAttributedString(html: htmlFork)
     }
 }

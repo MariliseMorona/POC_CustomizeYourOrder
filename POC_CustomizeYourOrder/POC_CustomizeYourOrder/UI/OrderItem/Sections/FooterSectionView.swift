@@ -9,6 +9,18 @@ import UIKit
 
 class FooterSectionView: UIView {
     
+    private var privatePresentBtn: Bool = false
+    var presentButton: Bool {
+        get { return privatePresentBtn }
+        set {
+            privatePresentBtn = newValue
+            for subview in subviews {
+                subview.removeFromSuperview()
+            }
+            setupViews()
+        }
+    }
+    
     lazy var footerLabel: UILabel = {
        let label = UILabel()
         label.numberOfLines = 0
@@ -29,7 +41,7 @@ class FooterSectionView: UIView {
         let btn = UIButton()
         btn.backgroundColor = UIColor.purple
         btn.layer.cornerRadius = 8
-        btn.setTitle("ver ticket", for: .normal)
+        btn.setTitle(Strings.ticket.text, for: .normal)
         btn.tintColor = .white
         btn.titleLabel?.font = UIFont.nunitoBold16
         return btn
@@ -48,7 +60,6 @@ class FooterSectionView: UIView {
 extension FooterSectionView: CodableView {
     func buildViews() {
         addSubview(footerLabel)
-        addSubview(footerButton)
     }
     
     func configConstraints() {
@@ -56,36 +67,31 @@ extension FooterSectionView: CodableView {
             make.top.equalToSuperview().inset(24)
             make.centerX.equalToSuperview()
         }
+        privatePresentBtn == true ? presentBtn() : presentCopy()
+    }
+    
+    func configViews() {
+        backgroundColor = UIColor.grayToBackground
+    }
+}
+
+extension FooterSectionView {
+    func presentBtn() {
+        addSubview(footerButton)
         footerButton.snp.makeConstraints { make in
             make.top.equalTo(footerLabel.snp.bottom).offset(16)
             make.leading.trailing.equalToSuperview().inset(24)
             make.bottom.equalToSuperview().inset(24)
             make.height.equalTo(48)
         }
-//        footerCopyLabel.snp.makeConstraints { make in
-//            make.top.equalTo(footerLabel.snp.bottom).offset(8)
-//            make.leading.trailing.equalToSuperview().inset(16)
-//            make.bottom.equalToSuperview().inset(24)
-//        }
     }
     
-    func configViews() {
-        backgroundColor = UIColor.grayToBackground
-        let htmlAiq = """
-                    <p style="text-align: center;">
-                        <span style="font-family: Nunito-Bold; font-size: 12pt; color: #580F78">
-                            feito com &hearts; em Maringá-PR
-                        </span>
-                    </p>
-                """
-        print("printando htmlAiq:\(htmlAiq)")
-        footerLabel.attributedText =  NSAttributedString(html: htmlAiq)
-        
-        let htmlCopy = """
-                   <p style="font-family: Nunito-Bold; font-size: 12pt; text-align: center; color: #580F78;">
-                            aiqfome.com © 2007-2023 aiqfome LTDA.<br>
-                            CNPJ: 09.186.786/0001-58<br></p>
-               """
-        footerCopyLabel.attributedText =  NSAttributedString(html: htmlCopy)
+    func presentCopy(){
+        addSubview(footerCopyLabel)
+        footerCopyLabel.snp.makeConstraints { make in
+            make.top.equalTo(footerLabel.snp.bottom).offset(8)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.bottom.equalToSuperview().inset(24)
+        }
     }
 }

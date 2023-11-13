@@ -15,7 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        let vc = OrderViewController()
+        let factory = OrderViewFactory.make()
+        let vc = factory
         let navigation = UINavigationController(rootViewController: vc)
         navigation.navigationBar.backgroundColor = UIColor.purple
         window?.makeKeyAndVisible()

@@ -9,18 +9,23 @@ import UIKit
 
 class SizeSectionView: UIView {
     
-//    var title: NSAttributedString? {
-//        didSet {
-//            textLabel.attributedText = title
-//        }
-//    }
+    var title: NSAttributedString? {
+        didSet {
+            titleView.title = title
+        }
+    }
+    
+    var middleValue: NSAttributedString? {
+        didSet {
+            valueMiddleLabel.attributedText = middleValue
+        }
+    }
     
     lazy var titleView = TitleSectionView()
     
-    
     lazy var mandatory: UILabel = {
        let label = UILabel()
-        label.text = "obrigatório"
+        label.text = Strings.obrigatory.text
         label.numberOfLines = 1
         label.backgroundColor = UIColor.blackAiQ
         label.layer.cornerRadius = 8
@@ -32,20 +37,19 @@ class SizeSectionView: UIView {
     
     lazy var middleRadioButton: UIButton = {
         let btn = UIButton()
-         btn.backgroundColor = .blue
-         return btn
+        return btn
     }()
     
     lazy var imageMoney: UIImageView = {
         let img = UIImageView()
         img.contentMode = .scaleAspectFit
-        img.image = UIImage(named: "iconMoney")
+        img.image = UIImage.iconMoney
         return img
     }()
     
     lazy var middleLabel: UILabel = {
        let label = UILabel()
-        label.text = "médio"
+        label.text = Strings.middle.text
         label.font = UIFont.nunitoRegular14
         label.textColor = UIColor.gray
         label.numberOfLines = 1
@@ -59,15 +63,24 @@ class SizeSectionView: UIView {
         return label
     }()
     
+    lazy var promoValueMiddleLabel: UILabel = {
+       let label = UILabel()
+        label.numberOfLines = 1
+        label.textAlignment = .right
+        label.text = Strings.value1990.text
+        label.textColor = UIColor.green
+        label.font = UIFont.nunitoBold14
+        return label
+    }()
+    
     lazy var largeRadioButton: UIButton = {
         let btn = UIButton()
-         btn.backgroundColor = .green
-         return btn
+        return btn
     }()
     
     lazy var largeLabel: UILabel = {
        let label = UILabel()
-        label.text = "grande"
+        label.text = Strings.large.text
         label.font = UIFont.nunitoRegular14
         label.textColor = UIColor.gray
         label.numberOfLines = 1
@@ -76,7 +89,7 @@ class SizeSectionView: UIView {
     
     lazy var valueLargeLabel: UILabel = {
        let label = UILabel()
-        label.text = "R$ 28,90"
+        label.text = Strings.value2890.text
         label.numberOfLines = 1
         label.textAlignment = .right
         label.font = UIFont.nunitoBold14
@@ -102,6 +115,7 @@ extension SizeSectionView: CodableView {
         addSubview(imageMoney)
         addSubview(middleLabel)
         addSubview(valueMiddleLabel)
+        addSubview(promoValueMiddleLabel)
         addSubview(largeRadioButton)
         addSubview(largeLabel)
         addSubview(valueLargeLabel)
@@ -135,6 +149,10 @@ extension SizeSectionView: CodableView {
         valueMiddleLabel.snp.makeConstraints { make in
             make.centerY.equalTo(imageMoney.snp.centerY)
             make.leading.equalTo(middleLabel.snp.trailing)
+        }
+        promoValueMiddleLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(valueMiddleLabel.snp.centerY)
+            make.leading.equalTo(valueMiddleLabel.snp.trailing).offset(5)
             make.trailing.equalToSuperview()
         }
         largeRadioButton.snp.makeConstraints { make in
@@ -153,28 +171,4 @@ extension SizeSectionView: CodableView {
             make.bottom.equalToSuperview().inset(16)
         }
     }
-    func configViews() {
-        let htmlValueMiddle = """
-                    <span style="font-family: Nunito-Bold; font-size: 12pt;">
-                                de R$ 22,90 por
-                    </span><br>
-                    <span style="font-family: Nunito-Bold; font-size: 14pt; color: #O2A117";>
-                                R$ 19,90
-                    </span>
-               """
-        
-        valueMiddleLabel.attributedText = NSAttributedString(html: htmlValueMiddle)
-        
-        let htmlSize = """
-                    <span style="font-family: Nunito-Bold; font-size: 16pt;">
-                        qual o tamanho?
-                    </span><br>
-                    <span style="font-family: Nunito-Bold; font-size: 12pt; color: #6D6F73">
-                        escolha 1
-                    </span>
-               """
-        titleView.title =  NSAttributedString(html: htmlSize)
-    }
-    
 }
-

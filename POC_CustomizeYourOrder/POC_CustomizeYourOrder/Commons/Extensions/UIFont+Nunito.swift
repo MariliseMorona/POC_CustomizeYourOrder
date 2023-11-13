@@ -35,4 +35,8 @@ extension UIFont {
     static var nunitoSemiBold12: UIFont {
         return UIFont(name: "Nunito-SemiBold", size: 12)!
     }
+    
+    static var nunitoSemiBold14: UIFont {
+        return UIFont(name: "Nunito-SemiBold", size: 14)!
+    }
 }

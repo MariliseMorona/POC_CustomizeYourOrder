@@ -25,7 +25,7 @@ class OrderView: UIView {
     lazy var imageItem: UIImageView = {
         let img = UIImageView()
         img.contentMode = .scaleAspectFit
-        img.image = UIImage(named: "food")
+        img.image = UIImage.food
         return img
     }()
     
@@ -36,7 +36,7 @@ class OrderView: UIView {
     lazy var separatorSizeView = SectionDividerView()
     lazy var drinkItem = DrinkSectionView()
     lazy var separatorDrinkView = SectionDividerView()
-    lazy var talherItem = CutlerySectionView()
+    lazy var cutleryItem = CutlerySectionView()
     lazy var separatorTalherView = SectionDividerView()
     lazy var moreItem = MoreSectionView()
     lazy var separatorMoreView = SectionDividerView()
@@ -65,7 +65,7 @@ extension OrderView: CodableView {
         containerView.addSubview(separatorSizeView)
         containerView.addSubview(drinkItem)
         containerView.addSubview(separatorDrinkView)
-        containerView.addSubview(talherItem)
+        containerView.addSubview(cutleryItem)
         containerView.addSubview(separatorTalherView)
         containerView.addSubview(moreItem)
         containerView.addSubview(separatorMoreView)
@@ -114,12 +114,12 @@ extension OrderView: CodableView {
             make.top.equalTo(drinkItem.snp.bottom).offset(8)
             make.leading.trailing.equalTo(containerView)
         }
-        talherItem.snp.makeConstraints { make in
+        cutleryItem.snp.makeConstraints { make in
             make.top.equalTo(separatorDrinkView.snp.bottom).offset(8)
             make.leading.trailing.equalTo(containerView).inset(16)
         }
         separatorTalherView.snp.makeConstraints { make in
-            make.top.equalTo(talherItem.snp.bottom).offset(8)
+            make.top.equalTo(cutleryItem.snp.bottom).offset(8)
             make.leading.trailing.equalTo(containerView)
         }
         moreItem.snp.makeConstraints { make in

@@ -9,6 +9,17 @@ import UIKit
 
 class ObservationSectionView: UIView {
     
+    var title: NSAttributedString? {
+        didSet {
+            
+//            for subview in subviews {
+//                subview.removeFromSuperview()
+//            }
+            containerTextView.attributedText = title
+//            setupViews()
+        }
+    }
+    
     lazy var containerView: UIView = {
         let view = UIView()
         view.layer.borderColor = UIColor.gray.cgColor
@@ -27,6 +38,7 @@ class ObservationSectionView: UIView {
     lazy var inputTextView: UITextView = {
         let text = UITextView()
         text.backgroundColor = .clear
+        text.textColor = .clear
         return text
     }()
     
@@ -57,18 +69,8 @@ extension ObservationSectionView: CodableView {
             make.leading.trailing.equalTo(containerView).inset(12)
         }
         inputTextView.snp.makeConstraints { make in
-            make.edges.equalTo(containerTextView)
+            make.top.bottom.equalTo(containerView).inset(10)
+            make.leading.trailing.equalTo(containerView).inset(12)
         }
     }
-    func configViews() {
-        let htmlObservation = """
-                   <span style="font-family: Nunito-SemiBold; font-size: 14pt; color: #6D6F73">
-                        alguma observação do item? &bull; opcional
-                   <br>
-                        ex.: tirar algum ingrediente, ponto do prato
-                   </span>
-               """
-        containerTextView.attributedText =  NSAttributedString(html: htmlObservation)
-    }
-    
 }
