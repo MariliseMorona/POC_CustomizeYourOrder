@@ -74,6 +74,10 @@ enum Strings {
     case moreItens
     case selectedTwo
     case defaultAddress
+    case namePlate
+    case fromValue
+    case descriptionPlate
+    case add
     
     
     
@@ -175,6 +179,14 @@ enum Strings {
             return "escolha até 2"
         case .defaultAddress:
             return "Rua Mandaguari, 198 >"
+        case .namePlate:
+            return "Ceviche de salmão"
+        case .fromValue:
+            return "a partir de"
+        case .descriptionPlate:
+            return "salmão temperado com limão, cebola e pimenta"
+        case .add:
+            return "adicionar"
         }
     }
 }

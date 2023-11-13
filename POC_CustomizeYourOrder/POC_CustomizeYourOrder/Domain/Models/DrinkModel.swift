@@ -26,11 +26,22 @@ enum DrinkTag {
     var cost: Double {
         switch self {
         case .soda:
-            return 5.00
+            return 10.00
         case .juice:
             return 6.00
         case .water:
             return 3.00
+        }
+    }
+    
+    var text: String {
+        switch self {
+        case .soda:
+            return Strings.soda.text
+        case .juice:
+            return Strings.juice.text
+        case .water:
+            return Strings.water.text
         }
     }
 }

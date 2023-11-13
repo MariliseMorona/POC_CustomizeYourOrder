@@ -28,4 +28,12 @@ enum MoreItensTag {
             return 8.00
         }
     }
+    var text: String {
+        switch self {
+        case .cookie:
+            return Strings.cookie.text
+        case .rolls:
+            return Strings.roll.text
+        }
+    }
 }

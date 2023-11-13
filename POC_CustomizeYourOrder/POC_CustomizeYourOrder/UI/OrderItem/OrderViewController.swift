@@ -15,32 +15,7 @@ class OrderViewController: UIViewController {
     private var orderView = OrderView()
     private var navigationView = NavigationView()
     
-    private let minLimitItem = 0
-    private let limitItemForTrash = 1
-    
-    private var privateCountFirstDrink: Int = 0
-    var countFirstDrink: Int = 0 {
-        didSet {
-            privateCountFirstDrink = countFirstDrink
-        }
-    }
-    
-    private var privateCountSecondDrink: Int = 0
-    var countSecondDrink: Int = 0 {
-        didSet {
-            privateCountSecondDrink = countSecondDrink
-        }
-    }
-    
-    private var privateCountThirdDrink: Int = 0
-    var countThirdDrink: Int = 0 {
-        didSet {
-            privateCountThirdDrink = countThirdDrink
-        }
-    }
-    
     init() {
-        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -52,7 +27,7 @@ class OrderViewController: UIViewController {
         super.viewDidLoad()
         view = orderView
         view.backgroundColor = UIColor.grayToBackground
-        self.viewModel = OrderViewModel(controller: self)
+        self.viewModel = OrderViewModel(model: nil, controller: self)
         fetchedNavigation()
         fetchedSizeView()
         fetchedFooterView()
@@ -65,9 +40,40 @@ class OrderViewController: UIViewController {
 }
 
 extension OrderViewController: OrderViewControllerProtocol {
+    func updateTotalCost() {
+        if let cost = viewModel?.totalCost {
+            var newCost = "R$ \(cost)"
+            let htmlQuantify = """
+                        <span style="font-family: Nunito-Bold; font-size: 16pt; color: #393A3C">
+                            \(Strings.howMuch.text)
+                        </span><br>
+                        <span style="font-family: Nunito-SemiBold; font-size: 14pt; color: #6D6F73">
+                            \(Strings.total.text)
+                        </span>
+                        <span style="font-family: Nunito-Bold; font-size: 14pt; color: #393A3C">
+                           \(newCost)
+                        </span>
+                   """
+            orderView.quantifyItem.title = NSAttributedString(html: htmlQuantify)
+        } else {
+            fetchedQuantifyView()
+        }
+    }
+    
+    func openOrderReceipt() {
+        let controller = OrderViewFactory.openReceiptController(vc: self)
+        controller.modalPresentationStyle = .popover
+        present(controller, animated: true)
+    }
+    
+    func changeForDecreaseItemBtm(tag: Int) {
+        if tag == ItemTags.addBtn.value {
+            orderView.quantifyItem.quantifyView.decreaseItem.setImage(UIImage.decreaseBtn, for: .normal)
+        }
+    }
+    
     func updateObservation() {
         if let message = self.viewModel?.messageObs {
-            print("printando messageObs: \(self.viewModel?.messageObs)")
             let htmlObservation = """
                        <span style="font-family: Nunito-SemiBold; font-size: 14pt; color: #6D6F73">
                             \(message)
@@ -376,17 +382,31 @@ extension OrderViewController {
         orderView.quantifyItem.quantifyView.addItem.addTarget(self, action: #selector(tappedAddItem), for: .touchUpInside)
         orderView.quantifyItem.quantifyView.addItem.tag = 2
         orderView.quantifyItem.quantifyView.decreaseItem.addTarget(self, action: #selector(tappedReduceItem), for: .touchUpInside)
+        orderView.quantifyItem.quantifyView.decreaseItem.tag = 3
+        
+        let htmlTitle = """
+                   <span style="font-family: Nunito-Bold; font-size: 16pt; color: #393A3C">
+                        \(Strings.namePlate.text)
+                   </span><br>
+               
+                   <span style="font-family: Nunito-Bold; font-size: 14pt; color: #6D6F73">
+                        \(Strings.fromValue.text)
+                    </span>
+               
+                   <span style="font-family: Nunito-Bold; font-size: 18pt; color: #580F78">
+                        \(Strings.value1990.text)
+                    </span><br>
+               
+                   <span style="font-family: Nunito-SemiBold; font-size: 14pt; color: #6D6F73">
+                        \(Strings.descriptionPlate.text)
+                    </span>
+               """
+        orderView.titleItem.title =  NSAttributedString(html: htmlTitle)
         
         let htmlQuantify = """
                     <span style="font-family: Nunito-Bold; font-size: 16pt; color: #393A3C">
                         \(Strings.howMuch.text)
                     </span><br>
-                    <span style="font-family: Nunito-SemiBold; font-size: 14pt; color: #6D6F73">
-                        \(Strings.total.text)
-                    </span>
-                    <span style="font-family: Nunito-Bold; font-size: 14pt; color: #393A3C">
-                       \(Strings.value2990.text)
-                    </span>
                """
         orderView.quantifyItem.title = NSAttributedString(html: htmlQuantify)
         
@@ -419,18 +439,16 @@ extension OrderViewController {
         
         orderView.cutleryItem.forkView.addItem.addTarget(self, action: #selector(tappedCutleryRadioBtn), for: .touchUpInside)
         orderView.cutleryItem.forkView.addItem.tag = CutleryTag.fork.value
-        
-        func configViews() {
-            let htmlFork = """
-                       <span style="font-family: Nunito-Bold; font-size: 16pt; color: #393A3C">
-                            \(Strings.needFork.text)
-                       </span><br>
-                       <span style="font-family: Nunito-Bold; font-size: 12pt; color: #6D6F73">
-                            \(Strings.selectedOne)
-                       </span>
-                   """
-            orderView.cutleryItem.title = NSAttributedString(html: htmlFork)
-        }
+    
+        let htmlFork = """
+                   <span style="font-family: Nunito-Bold; font-size: 16pt; color: #393A3C">
+                        \(Strings.needFork.text)
+                   </span><br>
+                   <span style="font-family: Nunito-Bold; font-size: 12pt; color: #6D6F73">
+                        \(Strings.selectedOne)
+                   </span>
+               """
+        orderView.cutleryItem.title = NSAttributedString(html: htmlFork)
     }
     
     fileprivate func fetchedMoreView() {
@@ -442,18 +460,15 @@ extension OrderViewController {
         orderView.moreItem.rollView.addItem.addTarget(self, action: #selector(tappedCheckBox), for: .touchUpInside)
         orderView.moreItem.rollView.addItem.tag = MoreItensTag.rolls.value
         
-        func configViews() {
-            let htmlMore = """
-                       <span style="font-family: Nunito-Bold; font-size: 16pt; color: #393A3C">
-                            \(Strings.moreItens.text)
-                       </span><br>
-                       <span style="font-family: Nunito-Bold; font-size: 12pt; color: #6D6F73">
-                            \(Strings.selectedTwo.text)
-                       </span>
-                   """
-            orderView.moreItem.title = NSAttributedString(html: htmlMore)
-        }
-        
+        let htmlMore = """
+                   <span style="font-family: Nunito-Bold; font-size: 16pt; color: #393A3C">
+                        \(Strings.moreItens.text)
+                   </span><br>
+                   <span style="font-family: Nunito-Bold; font-size: 12pt; color: #6D6F73">
+                        \(Strings.selectedTwo.text)
+                   </span>
+               """
+        orderView.moreItem.title = NSAttributedString(html: htmlMore)
     }
     
     func fetchedObservationView(){
@@ -470,10 +485,6 @@ extension OrderViewController {
 }
 
 extension OrderViewController: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        print("printando textViewDidBeginEditing")
-    }
-    
     func textViewDidEndEditing(_ textView: UITextView) {
         if let text = textView.text {
             self.viewModel?.getObservation(message: text)

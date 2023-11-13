@@ -20,7 +20,6 @@ class QuantifyView: UIView {
     
     lazy var decreaseItem: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage.decreaseBtn, for: .normal)
         return btn
     }()
     
@@ -42,7 +41,7 @@ class QuantifyView: UIView {
     lazy var defaultAddBtn: UIButton = {
         let btn = UIButton()
         btn.backgroundColor = .gray
-        btn.setTitle("adicionar", for: .normal)
+        btn.setTitle(Strings.add.text, for: .normal)
         btn.layer.cornerRadius = 8
         btn.titleLabel?.font = UIFont.nunitoBold14
         return btn

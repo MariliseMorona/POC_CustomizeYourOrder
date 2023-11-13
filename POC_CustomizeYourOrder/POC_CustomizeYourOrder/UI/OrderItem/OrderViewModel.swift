@@ -10,17 +10,15 @@ import UIKit
 class OrderViewModel: OrderViewModelProtocol {
     
     weak var controller: OrderViewControllerProtocol?
-    //    var model: OrderModel?
+    var model: OrderModel?
     
-    //    init(model: OrderModel, controller: OrderViewControllerProtocol) {
-    //        self.model = model
-    //        self.controller = controller
-    //    }
-    
-    init(controller: OrderViewControllerProtocol) {
-        //        self.model = model
+    init(model: OrderModel?, controller: OrderViewControllerProtocol) {
+        self.model = model
         self.controller = controller
     }
+    
+    private let minLimitItem = 0
+    private let limitItemForTrash = 1
     
     private var privateAddress: Address = Address()
     var address: String? = Strings.defaultAddress.text {
@@ -29,6 +27,7 @@ class OrderViewModel: OrderViewModelProtocol {
             guard let controller = controller else {
                 return 
             }
+            calculateTotalValue()
             controller.updateAddress(address: privateAddress.newAddress)
         }
     }
@@ -40,12 +39,13 @@ class OrderViewModel: OrderViewModelProtocol {
             guard let controller = controller else {
                 return
             }
+            if privateCountItem != 0 {
+                calculateTotalValue()
+            }
+            
             validateIfTheButtonShouldAppear()
         }
     }
-    
-    private let minLimitItem = 0
-    private let limitItemForTrash = 1
     
     private var privateCountItem: Int = 0
     var countItem: Int? = 0 {
@@ -54,7 +54,18 @@ class OrderViewModel: OrderViewModelProtocol {
             guard let controller = controller else {
                 return
             }
+            if selectedSize != .none {
+                calculateTotalValue()
+            }
             controller.updateCountItem()
+            
+        }
+    }
+    
+    private var privateTotalCost: String = Strings.empty.text
+    var totalCost: String? = Strings.empty.text {
+        didSet {
+            privateTotalCost = totalCost ?? Strings.empty.text
         }
     }
     
@@ -76,6 +87,7 @@ class OrderViewModel: OrderViewModelProtocol {
             guard let controller = controller else {
                 return
             }
+            calculateTotalValue()
             controller.updateCountItem()
         }
     }
@@ -87,6 +99,7 @@ class OrderViewModel: OrderViewModelProtocol {
             guard let controller = controller else {
                 return
             }
+            calculateTotalValue()
             controller.updateCountItem()
         }
     }
@@ -98,6 +111,7 @@ class OrderViewModel: OrderViewModelProtocol {
             guard let controller = controller else {
                 return
             }
+            calculateTotalValue()
             controller.updateCountItem()
         }
     }
@@ -109,10 +123,11 @@ class OrderViewModel: OrderViewModelProtocol {
         }
     }
     
-    private var privateSelectedSize: SizeTag? = .middle
-    var selectedSize: SizeTag? = .middle {
+    private var privateSelectedSize: SizeTag? = .none
+    var selectedSize: SizeTag? = .none {
         didSet {
-            privateSelectedSize = selectedSize ?? .middle
+            privateSelectedSize = selectedSize ?? .none
+            calculateTotalValue()
         }
     }
     
@@ -120,6 +135,7 @@ class OrderViewModel: OrderViewModelProtocol {
     var selectedCutlery: CutleryTag? = .hashi {
         didSet {
             privateSelectedCutlery = selectedCutlery ?? .hashi
+            calculateTotalValue()
         }
     }
     
@@ -134,6 +150,8 @@ class OrderViewModel: OrderViewModelProtocol {
     var cookieBtn: Bool? = false {
         didSet {
             selectedCookieBtn = cookieBtn ?? false
+            print("printando selectedCookieBtn: \(selectedCookieBtn)")
+            calculateTotalValue()
         }
     }
     
@@ -141,6 +159,8 @@ class OrderViewModel: OrderViewModelProtocol {
     var rollBtn: Bool? = false {
         didSet {
             selectedRollBtn = rollBtn ?? false
+            print("printando selectedRollBtn: \(selectedRollBtn)")
+            calculateTotalValue()
         }
     }
     
@@ -148,10 +168,10 @@ class OrderViewModel: OrderViewModelProtocol {
     var messageObs: String? = Strings.empty.text {
         didSet {
             privateMessageObs = messageObs ?? Strings.empty.text
-            print("printando privateMessageObs: \(privateMessageObs)")
             guard let controller = controller else {
                 return
             }
+            calculateTotalValue()
             controller.updateObservation()
         }
     }
@@ -199,12 +219,16 @@ class OrderViewModel: OrderViewModelProtocol {
         if privateCountItem == minLimitItem {
             countItem! += 1
             presentDfAddBtn = false
+            guard let controller = controller else {
+                return
+            }
+            controller.changeForTrashBtn()
         } else if privateCountItem >= limitItemForTrash {
             countItem! += 1
             guard let controller = controller else {
                 return
             }
-            controller.changeForDecreaseBtn()
+            controller.changeForDecreaseItemBtm(tag: tag)
         }
     }
     func reduceItem(tag: Int) {
@@ -292,52 +316,89 @@ class OrderViewModel: OrderViewModelProtocol {
     
     func addMoreItens(tag: Int) {
         selectedSection = [.moreItens: tag]
+        print("printando tag: \(tag)")
         guard let controller = controller else {
             return
         }
         tag == MoreItensTag.cookie.value ? (cookieBtn = !selectedCookieBtn) : (rollBtn = !selectedRollBtn)
+        print("printando tag == MoreItensTag.cookie.value: \(tag == MoreItensTag.cookie.value)")
         selectedRollBtn == true ? controller.changeForChecked() : controller.changeForUnchecked()
+        print("printando selectedRollBtn: \(selectedRollBtn)")
         selectedCookieBtn == true ? controller.changeForChecked() : controller.changeForUnchecked()
+        print("printando selectedCookieBtn: \(selectedCookieBtn)")
     }
     
     func getObservation(message: String) {
         messageObs = message
     }
     
-    func getTotalCostOrder() {
-        let costPlate = Double(privateCountItem) * selectedSize!.cost
-        print("printando costPlate: \(costPlate)")
+    private func calculateTotalValue() {
+        var costPlate: Double = 0
+        if let size = selectedSize {
+            costPlate = Double(privateCountItem) * size.cost
+        }
+        
         var costSoda: Double = 0
         if privateCountSoda > 0  {
             costSoda = Double(privateCountSoda) * DrinkTag.soda.cost
         }
-        print("printando costSoda: \(costSoda)")
         var costJuice: Double = 0
         if privateCountJuice > 0  {
             costJuice = Double(privateCountJuice) * DrinkTag.juice.cost
         }
-        print("printando costJuice: \(costJuice)")
         var costWater: Double = 0
         if privateCountWater > 0  {
             costWater = Double(privateCountWater) * DrinkTag.water.cost
         }
-        print("printando costWater: \(costWater)")
         var costCutlery: Double = 0
         if privateSelectedCutlery == .fork {
             costCutlery = CutleryTag.fork.cost
         }
-        print("printando costCutlery: \(costCutlery)")
         var costMoreItens: Double = 0
         if selectedRollBtn {
             costMoreItens += MoreItensTag.rolls.cost
         }
-        print("printando costMoreItens: \(costMoreItens)")
         if selectedCookieBtn {
             costMoreItens += MoreItensTag.cookie.cost
         }
-        print("printando costMoreItens: \(costMoreItens)")
         totalCostOrder = costPlate + costSoda + costJuice + costWater + costCutlery + costMoreItens
-        print("printando totalCostOrder: \(totalCostOrder)")
+        
+        var newOrder = OrderModel(
+            address: address,
+            observation: messageObs,
+            countItem: countItem,
+            sizeItem: selectedSize,
+            priceItem: selectedSize?.cost,
+            costItem: costPlate,
+            countSoda: countSoda,
+            costSoda: costSoda,
+            countJuice: countJuice,
+            costJuice: costJuice,
+            countWater: countWater,
+            costWater: costWater,
+            costCutlery: costCutlery,
+            costCookie: selectedCookieBtn ? MoreItensTag.cookie.cost : 0,
+            costRoll: selectedRollBtn ? MoreItensTag.rolls.cost : 0,
+            costTotal: totalCostOrder)
+        model = newOrder
+        guard let controller = controller else {
+            return
+        }
+        if let cost = model?.costTotal, cost != 0 {
+            let textCost = cost.arredonda(casasDecimais: 2)
+            let valueText = textCost.replacingOccurrences(of: ".", with: ",")
+            totalCost = valueText
+        }
+        
+        controller.updateTotalCost()
+    }
+    
+    func getTotalCostOrder() {
+        calculateTotalValue()
+        guard let controller = controller else {
+            return
+        }
+        controller.openOrderReceipt()
     }
 }
 

@@ -28,4 +28,13 @@ enum CutleryTag {
             return 1.00
         }
     }
+    
+    var text: String {
+        switch self {
+        case .hashi:
+            return Strings.hashi.text
+        case .fork:
+            return Strings.cutlery.text
+        }
+    }
 }

@@ -7,7 +7,28 @@
 
 import Foundation
 
+
 struct OrderModel {
+    var address: String?
+    var observation: String?
+    var countItem: Int?
+    var sizeItem: SizeTag?
+    var priceItem: Double?
+    var costItem: Double?
+    var countSoda: Int?
+    var costSoda: Double?
+    var countJuice: Int?
+    var costJuice: Double?
+    var countWater: Int?
+    var costWater: Double?
+    var costCutlery: Double?
+    var costCookie: Double?
+    var costRoll: Double?
+    var costTotal: Double?
+    
+}
+
+struct OrderTypeModel {
     var size: SizeTag?
     var drink: DrinkTag?
     var typeBtn: TypeProduct?
@@ -42,4 +63,7 @@ struct Address {
 
 struct Item {
     var count: Int = 0
+    
+    
 }
+

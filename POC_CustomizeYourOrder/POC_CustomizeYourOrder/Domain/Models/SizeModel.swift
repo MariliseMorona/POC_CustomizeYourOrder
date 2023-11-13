@@ -10,6 +10,7 @@ import UIKit
 enum SizeTag {
     case middle
     case large
+    case none
 
     var value: Int {
         switch self {
@@ -17,6 +18,8 @@ enum SizeTag {
             return 1
         case .large:
             return 2
+        case .none:
+            return 0
         }
     }
     
@@ -26,6 +29,8 @@ enum SizeTag {
             return 19.90
         case .large:
             return 28.90
+        case .none:
+            return 0
         }
     }
 }

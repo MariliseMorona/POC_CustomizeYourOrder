@@ -43,26 +43,4 @@ extension TitleSectionView: CodableView {
             make.edges.equalToSuperview()
         }
     }
-    func configViews() {
-        let htmlTitle = """
-                   <span style="font-family: Nunito-Bold; font-size: 16pt; color: #393A3C">
-                        Ceviche de salmão
-                   </span><br>
-               
-                   <span style="font-family: Nunito-Bold; font-size: 14pt; color: #6D6F73">
-                        a partir de
-                    </span>
-               
-                   <span style="font-family: Nunito-Bold; font-size: 18pt; color: #580F78">
-                        R$ 19,90
-                    </span><br>
-               
-                   <span style="font-family: Nunito-SemiBold; font-size: 14pt; color: #6D6F73">
-                        salmão temperado com limão, cebola e pimenta
-                    </span>
-               """
-        textLabel.attributedText =  NSAttributedString(html: htmlTitle)
-    }
-    
-    
 }
