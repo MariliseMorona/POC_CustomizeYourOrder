@@ -17,8 +17,8 @@ class OrderViewModel: OrderViewModelProtocol {
         self.controller = controller
     }
     
-    private let minLimitItem = 0
-    private let limitItemForTrash = 1
+    let minLimitItem = 0
+    let limitItemForTrash = 1
     
     private var privateAddress: Address = Address()
     var address: String? = Strings.defaultAddress.text {
