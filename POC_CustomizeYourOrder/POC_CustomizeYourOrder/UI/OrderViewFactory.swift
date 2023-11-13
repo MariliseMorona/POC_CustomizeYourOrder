@@ -29,6 +29,5 @@ struct OrderViewFactory {
             return vcProtocol as! OrderReceiptViewController
         }
         return OrderReceiptViewController()
-        
     }
 }

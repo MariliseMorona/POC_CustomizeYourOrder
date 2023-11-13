@@ -8,29 +8,112 @@
 import XCTest
 @testable import POC_CustomizeYourOrder
 
+class POC_CustomizeYourOrderViewControllerTests: OrderViewControllerProtocol {
+    func updateAddress(address: String) { }
+    
+    func changeAddress(_ completion: @escaping (Result<String, Error>) -> Void) { }
+    
+    func changeForPresentButton() { }
+    
+    func changeForPresentDfAddButton() { }
+    
+    func updateCountItem() { }
+    
+    func changeForDecreaseBtn() { }
+    
+    func changeForTrashBtn() { }
+    
+    func changeForInativedBtn() { }
+    
+    func changeForChecked() { }
+    
+    func changeForUnchecked() { }
+    
+    func updateObservation() { }
+    
+    func changeForDecreaseItemBtm(tag: Int) { }
+    
+    func openOrderReceipt() { }
+    
+    func updateTotalCost() { }
+    
+    
+}
+
 final class POC_CustomizeYourOrderTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    private var viewModel: OrderViewModel?
+    private var vc: POC_CustomizeYourOrderViewControllerTests?
+    override func setUp(){
+        super.setUp()
+        vc = POC_CustomizeYourOrderViewControllerTests()
+        viewModel = OrderViewModel(model: nil, controller: vc!)
     }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+    override func setUpWithError() throws { }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
+    override func tearDownWithError() throws { }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testIfCountItemIsEqualLimit() {
+        XCTAssertEqual(viewModel?.countItem, viewModel?.minLimitItem)
+    }
+    
+    func testIfCountItemIsThanLimit() {
+        if let count = viewModel?.countItem, let minValue = viewModel?.limitItemForTrash {
+            XCTAssertLessThan(count, minValue)
+        } else {
+            XCTFail("Apresenta valor nil")
         }
     }
-
+    
+    func testIfCountSodaItemIsEqualLimit() {
+        XCTAssertEqual(viewModel?.countSoda, viewModel?.minLimitItem)
+    }
+    
+    func testIfCountSodaIsThanLimit() {
+        if let count = viewModel?.countSoda, let minValue = viewModel?.limitItemForTrash {
+            XCTAssertLessThan(count, minValue)
+        } else {
+            XCTFail("Apresenta valor nil")
+        }
+    }
+    
+    func testIfCountJuiceItemIsEqualLimit() {
+        XCTAssertEqual(viewModel?.countJuice, viewModel?.minLimitItem)
+    }
+    
+    func testIfCountJuiceIsThanLimit() {
+        if let count = viewModel?.countJuice, let minValue = viewModel?.limitItemForTrash {
+            XCTAssertLessThan(count, minValue)
+        } else {
+            XCTFail("Apresenta valor nil")
+        }
+    }
+    
+    func testIfCountWaterItemIsEqualLimit() {
+        XCTAssertEqual(viewModel?.countWater, viewModel?.minLimitItem)
+    }
+    
+    func testIfCountWaterIsThanLimit() {
+        if let count = viewModel?.countWater, let minValue = viewModel?.limitItemForTrash {
+            XCTAssertLessThan(count, minValue)
+        } else {
+            XCTFail("Apresenta valor nil")
+        }
+    }
+    
+    func testIsAddressIsEmpty(){
+        if let address = viewModel?.address {
+            XCTAssertEqual(address, "Rua Mandaguari, 198 >")
+        }
+    }
+    
+    func textIfInitialStateIsTotalCostIsZero(){
+        if let plate = viewModel?.model?.costItem, let soda = viewModel?.model?.costSoda, let juice = viewModel?.model?.costJuice, let water = viewModel?.model?.costWater, let cutlery = viewModel?.model?.costCutlery, let cookie = viewModel?.model?.costCookie, let roll = viewModel?.model?.costRoll, let totalCost = viewModel?.model?.costTotal {
+            let total = plate + soda + juice + water + cutlery + cookie + roll
+            XCTAssertEqual(total, totalCost)
+        } else {
+            XCTFail("Apresenta valor nil")
+        }
+    }
 }
