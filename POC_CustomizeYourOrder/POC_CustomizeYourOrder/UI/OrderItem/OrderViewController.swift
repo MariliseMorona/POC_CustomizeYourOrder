@@ -182,14 +182,6 @@ extension OrderViewController: OrderViewControllerProtocol {
         
     }
     
-    func changeToSelectedRadioButton(tag: SizeTag) {
-        tag == .middle ? orderView.sizeItem.middleRadioButton.setImage(UIImage.selectedRadioBtn, for: .normal) : orderView.sizeItem.largeRadioButton.setImage(UIImage.selectedRadioBtn, for: .normal)
-    }
-    
-    func changeToDeselectedRadioButton(tag: SizeTag) {
-        tag == .middle ? orderView.sizeItem.middleRadioButton.setImage(UIImage.deselectedRadioBtn, for: .normal) : orderView.sizeItem.largeRadioButton.setImage(UIImage.selectedRadioBtn, for: .normal)
-    }
-    
     func changeForPresentButton() {
         orderView.footerView.presentButton = ((self.viewModel?.radioBtn) != nil)
     }
@@ -271,6 +263,8 @@ extension OrderViewController {
     }
     
     @objc func tappedRadioBtn(sender: UIButton) {
+        sender.tag == SizeTag.middle.value ? (orderView.sizeItem.middleRadioButton.setImage(UIImage.selectedRadioBtn, for: .normal)) : (orderView.sizeItem.middleRadioButton.setImage(UIImage.deselectedRadioBtn, for: .normal))
+        sender.tag == CutleryTag.fork.value ? (orderView.sizeItem.largeRadioButton.setImage(UIImage.selectedRadioBtn, for: .normal)) : (orderView.sizeItem.largeRadioButton.setImage(UIImage.deselectedRadioBtn, for: .normal))
         viewModel?.selectedSizeItem(tag: sender.tag)
     }
     
@@ -300,6 +294,10 @@ extension OrderViewController {
     @objc private func tappedCheckBox(sender: UIButton) {
         viewModel?.addMoreItens(tag: sender.tag)
     }
+    
+    @objc private func tappedFooterBtn() {
+        viewModel?.getTotalCostOrder()
+    }
 }
 
 extension OrderViewController {
@@ -327,8 +325,11 @@ extension OrderViewController {
     }
     
     fileprivate func fetchedSizeView() {
+        orderView.sizeItem.middleRadioButton.setImage(UIImage.deselectedRadioBtn, for: .normal)
         orderView.sizeItem.middleRadioButton.addTarget(self, action: #selector(tappedRadioBtn), for: .touchUpInside)
         orderView.sizeItem.middleRadioButton.tag = SizeTag.middle.value
+        
+        orderView.sizeItem.largeRadioButton.setImage(UIImage.deselectedRadioBtn, for: .normal)
         orderView.sizeItem.largeRadioButton.addTarget(self, action: #selector(tappedRadioBtn), for: .touchUpInside)
         orderView.sizeItem.largeRadioButton.tag = SizeTag.large.value
         
@@ -351,6 +352,7 @@ extension OrderViewController {
     }
     
     fileprivate func fetchedFooterView() {
+        orderView.footerView.footerButton.addTarget(self, action: #selector(tappedFooterBtn), for: .touchUpInside)
         let htmlAiq = """
                     <p style="text-align: center;">
                         <span style="font-family: Nunito-Bold; font-size: 12pt; color: #580F78">
@@ -478,8 +480,6 @@ extension OrderViewController: UITextViewDelegate {
         }
     }
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-//            let currentText = textField.text ?? ""
-//            let prospectiveText = (currentText as NSString).replacingCharacters(in: range, with: string)
         if let text = textView.text {
             self.viewModel?.getObservation(message: text)
             return true

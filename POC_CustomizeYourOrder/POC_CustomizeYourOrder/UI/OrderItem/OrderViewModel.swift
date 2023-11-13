@@ -109,6 +109,20 @@ class OrderViewModel: OrderViewModelProtocol {
         }
     }
     
+    private var privateSelectedSize: SizeTag? = .middle
+    var selectedSize: SizeTag? = .middle {
+        didSet {
+            privateSelectedSize = selectedSize ?? .middle
+        }
+    }
+    
+    private var privateSelectedCutlery: CutleryTag? = .hashi
+    var selectedCutlery: CutleryTag? = .hashi {
+        didSet {
+            privateSelectedCutlery = selectedCutlery ?? .hashi
+        }
+    }
+    
     private var privateValueCutlery: Double = 0
     var valueCutlery: Double? = 0 {
         didSet {
@@ -142,6 +156,13 @@ class OrderViewModel: OrderViewModelProtocol {
         }
     }
     
+    private var privateTotalCostOrder: Double = 0
+    var totalCostOrder: Double? = 0 {
+        didSet {
+            privateTotalCostOrder = totalCostOrder ?? 0
+        }
+    }
+    
     //MARK: Methods
     func validateIfTheButtonShouldAppear() {
         guard let controller = controller else {
@@ -167,11 +188,8 @@ class OrderViewModel: OrderViewModelProtocol {
     }
     
     func selectedSizeItem(tag: Int){
-        guard let controller = controller else {
-            return
-        }
-        tag == SizeTag.middle.value ? controller.changeToSelectedRadioButton(tag: .middle) : controller.changeToDeselectedRadioButton(tag: .middle)
-        tag == SizeTag.large.value ? controller.changeToSelectedRadioButton(tag: .large) : controller.changeToDeselectedRadioButton(tag: .large)
+        selectedSection = [.plateSize: tag]
+        tag == SizeTag.middle.value ? (selectedSize = .middle) : (selectedSize = .large)
         radioBtn = true
         validateIfTheButtonShouldAppear()
     }
@@ -269,6 +287,7 @@ class OrderViewModel: OrderViewModelProtocol {
     func addCutlery(tag: Int) {
         selectedSection = [.cutlery: tag]
         tag == CutleryTag.hashi.value ? (valueCutlery = CutleryTag.hashi.cost) : (valueCutlery = CutleryTag.fork.cost)
+        tag == CutleryTag.hashi.value ? (selectedCutlery = .hashi) : (selectedCutlery = .fork)
     }
     
     func addMoreItens(tag: Int) {
@@ -283,6 +302,42 @@ class OrderViewModel: OrderViewModelProtocol {
     
     func getObservation(message: String) {
         messageObs = message
+    }
+    
+    func getTotalCostOrder() {
+        let costPlate = Double(privateCountItem) * selectedSize!.cost
+        print("printando costPlate: \(costPlate)")
+        var costSoda: Double = 0
+        if privateCountSoda > 0  {
+            costSoda = Double(privateCountSoda) * DrinkTag.soda.cost
+        }
+        print("printando costSoda: \(costSoda)")
+        var costJuice: Double = 0
+        if privateCountJuice > 0  {
+            costJuice = Double(privateCountJuice) * DrinkTag.juice.cost
+        }
+        print("printando costJuice: \(costJuice)")
+        var costWater: Double = 0
+        if privateCountWater > 0  {
+            costWater = Double(privateCountWater) * DrinkTag.water.cost
+        }
+        print("printando costWater: \(costWater)")
+        var costCutlery: Double = 0
+        if privateSelectedCutlery == .fork {
+            costCutlery = CutleryTag.fork.cost
+        }
+        print("printando costCutlery: \(costCutlery)")
+        var costMoreItens: Double = 0
+        if selectedRollBtn {
+            costMoreItens += MoreItensTag.rolls.cost
+        }
+        print("printando costMoreItens: \(costMoreItens)")
+        if selectedCookieBtn {
+            costMoreItens += MoreItensTag.cookie.cost
+        }
+        print("printando costMoreItens: \(costMoreItens)")
+        totalCostOrder = costPlate + costSoda + costJuice + costWater + costCutlery + costMoreItens
+        print("printando totalCostOrder: \(totalCostOrder)")
     }
 }
 

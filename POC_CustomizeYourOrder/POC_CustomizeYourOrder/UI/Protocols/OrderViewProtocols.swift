@@ -29,6 +29,7 @@ protocol OrderViewModelProtocol: AnyObject {
     func addCutlery(tag: Int)
     func addMoreItens(tag: Int)
     func getObservation(message: String)
+    func getTotalCostOrder()
 
 }
 
@@ -36,8 +37,6 @@ protocol OrderViewModelProtocol: AnyObject {
 protocol OrderViewControllerProtocol: AnyObject {
     func updateAddress(address: String)
     func changeAddress(_ completion: @escaping(Result<String, Error>) -> Void)
-    func changeToSelectedRadioButton(tag: SizeTag)
-    func changeToDeselectedRadioButton(tag: SizeTag)
     func changeForPresentButton()
     func changeForPresentDfAddButton()
     func updateCountItem()

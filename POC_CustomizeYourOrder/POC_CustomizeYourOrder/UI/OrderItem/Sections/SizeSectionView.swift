@@ -37,7 +37,6 @@ class SizeSectionView: UIView {
     
     lazy var middleRadioButton: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage.deselectedRadioBtn, for: .normal)
         return btn
     }()
     
@@ -76,7 +75,6 @@ class SizeSectionView: UIView {
     
     lazy var largeRadioButton: UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage.deselectedRadioBtn, for: .normal)
         return btn
     }()
     
