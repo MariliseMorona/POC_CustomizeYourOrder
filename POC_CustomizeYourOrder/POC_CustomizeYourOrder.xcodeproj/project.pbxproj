@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1621F2662B0375E10017596C /* POC_CustomizeYourOrderViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1621F2652B0375E10017596C /* POC_CustomizeYourOrderViewControllerTests.swift */; };
 		16363BB52B00E12C00644E84 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16363BB42B00E12B00644E84 /* OrderViewModel.swift */; };
 		16363BB72B00E1D000644E84 /* OrderViewProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16363BB62B00E1D000644E84 /* OrderViewProtocols.swift */; };
 		16363BBD2B00E49600644E84 /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16363BBC2B00E49600644E84 /* OrderModel.swift */; };
@@ -50,9 +51,6 @@
 		16612A072B02F113002AD52C /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16612A032B02F113002AD52C /* Nunito-Regular.ttf */; };
 		16612A082B02F113002AD52C /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16612A042B02F113002AD52C /* Nunito-SemiBold.ttf */; };
 		16612A0A2B02F667002AD52C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16612A092B02F667002AD52C /* GoogleService-Info.plist */; };
-		16612A0D2B02F895002AD52C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 16612A0C2B02F895002AD52C /* FirebaseAnalytics */; };
-		16612A0F2B02F895002AD52C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 16612A0E2B02F895002AD52C /* FirebaseAuth */; };
-		16612A112B02F895002AD52C /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 16612A102B02F895002AD52C /* FirebaseCrashlytics */; };
 		1684C6D42B0302EF0018E1BC /* ModelsForViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1684C6D32B0302EF0018E1BC /* ModelsForViews.swift */; };
 		1684C6D62B031EC20018E1BC /* SectionsViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1684C6D52B031EC20018E1BC /* SectionsViewProtocol.swift */; };
 		3537900209001EDDA38BA4E6 /* Pods_POC_CustomizeYourOrderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69E86A59F648438D2A42FFAF /* Pods_POC_CustomizeYourOrderTests.framework */; };
@@ -80,6 +78,7 @@
 /* Begin PBXFileReference section */
 		00915A23781F0BB2F761E55E /* Pods-POC_CustomizeYourOrder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POC_CustomizeYourOrder.release.xcconfig"; path = "Target Support Files/Pods-POC_CustomizeYourOrder/Pods-POC_CustomizeYourOrder.release.xcconfig"; sourceTree = "<group>"; };
 		05445939AC187F367DAFCAE2 /* Pods-POC_CustomizeYourOrderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POC_CustomizeYourOrderTests.release.xcconfig"; path = "Target Support Files/Pods-POC_CustomizeYourOrderTests/Pods-POC_CustomizeYourOrderTests.release.xcconfig"; sourceTree = "<group>"; };
+		1621F2652B0375E10017596C /* POC_CustomizeYourOrderViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POC_CustomizeYourOrderViewControllerTests.swift; sourceTree = "<group>"; };
 		16363BB42B00E12B00644E84 /* OrderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
 		16363BB62B00E1D000644E84 /* OrderViewProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewProtocols.swift; sourceTree = "<group>"; };
 		16363BBC2B00E49600644E84 /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
@@ -143,9 +142,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16612A0D2B02F895002AD52C /* FirebaseAnalytics in Frameworks */,
-				16612A112B02F895002AD52C /* FirebaseCrashlytics in Frameworks */,
-				16612A0F2B02F895002AD52C /* FirebaseAuth in Frameworks */,
 				D5AAE0612CE334B1087B3A95 /* Pods_POC_CustomizeYourOrder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				1656D1A52AFEA9D2005C72C9 /* POC_CustomizeYourOrderTests.swift */,
+				1621F2652B0375E10017596C /* POC_CustomizeYourOrderViewControllerTests.swift */,
 			);
 			path = POC_CustomizeYourOrderTests;
 			sourceTree = "<group>";
@@ -412,11 +409,6 @@
 			dependencies = (
 			);
 			name = POC_CustomizeYourOrder;
-			packageProductDependencies = (
-				16612A0C2B02F895002AD52C /* FirebaseAnalytics */,
-				16612A0E2B02F895002AD52C /* FirebaseAuth */,
-				16612A102B02F895002AD52C /* FirebaseCrashlytics */,
-			);
 			productName = POC_CustomizeYourOrder;
 			productReference = 1656D18B2AFEA9D0005C72C9 /* POC_CustomizeYourOrder.app */;
 			productType = "com.apple.product-type.application";
@@ -448,7 +440,7 @@
 				1656D1A72AFEA9D2005C72C9 /* Sources */,
 				1656D1A82AFEA9D2005C72C9 /* Frameworks */,
 				1656D1A92AFEA9D2005C72C9 /* Resources */,
-				CF003FA5B7A3F0CF36551FCD /* [CP] Embed Pods Frameworks */,
+				B0285AAABB71DD9C155E1A37 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -492,9 +484,6 @@
 				Base,
 			);
 			mainGroup = 1656D1822AFEA9D0005C72C9;
-			packageReferences = (
-				16612A0B2B02F895002AD52C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-			);
 			productRefGroup = 1656D18C2AFEA9D0005C72C9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -640,7 +629,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CF003FA5B7A3F0CF36551FCD /* [CP] Embed Pods Frameworks */ = {
+		B0285AAABB71DD9C155E1A37 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -707,6 +696,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1656D1A62AFEA9D2005C72C9 /* POC_CustomizeYourOrderTests.swift in Sources */,
+				1621F2662B0375E10017596C /* POC_CustomizeYourOrderViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -926,7 +916,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C42AA3F6F4ABC784D569061C /* Pods-POC_CustomizeYourOrderTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -935,6 +925,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "morona.POC-CustomizeYourOrderTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -946,7 +939,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 05445939AC187F367DAFCAE2 /* Pods-POC_CustomizeYourOrderTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -955,6 +948,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "morona.POC-CustomizeYourOrderTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -966,13 +962,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 70C28E5679813FBA0029C5F6 /* Pods-POC_CustomizeYourOrder-POC_CustomizeYourOrderUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited) ";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "morona.POC-CustomizeYourOrderUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -984,13 +983,16 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 163E45F3F6B0D25F7127C35E /* Pods-POC_CustomizeYourOrder-POC_CustomizeYourOrderUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited) ";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "morona.POC-CustomizeYourOrderUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1038,35 +1040,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		16612A0B2B02F895002AD52C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = exactVersion;
-				version = 9.6.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		16612A0C2B02F895002AD52C /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 16612A0B2B02F895002AD52C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		16612A0E2B02F895002AD52C /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 16612A0B2B02F895002AD52C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		16612A102B02F895002AD52C /* FirebaseCrashlytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 16612A0B2B02F895002AD52C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseCrashlytics;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1656D1832AFEA9D0005C72C9 /* Project object */;
 }

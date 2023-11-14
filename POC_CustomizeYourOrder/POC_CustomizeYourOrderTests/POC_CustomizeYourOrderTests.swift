@@ -8,37 +8,6 @@
 import XCTest
 @testable import POC_CustomizeYourOrder
 
-class POC_CustomizeYourOrderViewControllerTests: OrderViewControllerProtocol {
-    func updateAddress(address: String) { }
-    
-    func changeAddress(_ completion: @escaping (Result<String, Error>) -> Void) { }
-    
-    func changeForPresentButton() { }
-    
-    func changeForPresentDfAddButton() { }
-    
-    func updateCountItem() { }
-    
-    func changeForDecreaseBtn() { }
-    
-    func changeForTrashBtn() { }
-    
-    func changeForInativedBtn() { }
-    
-    func changeForChecked() { }
-    
-    func changeForUnchecked() { }
-    
-    func updateObservation() { }
-    
-    func changeForDecreaseItemBtm(tag: Int) { }
-    
-    func openOrderReceipt() { }
-    
-    func updateTotalCost() { }
-    
-    
-}
 
 final class POC_CustomizeYourOrderTests: XCTestCase {
     
@@ -105,15 +74,6 @@ final class POC_CustomizeYourOrderTests: XCTestCase {
     func testIsAddressIsEmpty(){
         if let address = viewModel?.address {
             XCTAssertEqual(address, "Rua Mandaguari, 198 >")
-        }
-    }
-    
-    func textIfInitialStateIsTotalCostIsZero(){
-        if let plate = viewModel?.model?.costItem, let soda = viewModel?.model?.costSoda, let juice = viewModel?.model?.costJuice, let water = viewModel?.model?.costWater, let cutlery = viewModel?.model?.costCutlery, let cookie = viewModel?.model?.costCookie, let roll = viewModel?.model?.costRoll, let totalCost = viewModel?.model?.costTotal {
-            let total = plate + soda + juice + water + cutlery + cookie + roll
-            XCTAssertEqual(total, totalCost)
-        } else {
-            XCTFail("Apresenta valor nil")
         }
     }
 }

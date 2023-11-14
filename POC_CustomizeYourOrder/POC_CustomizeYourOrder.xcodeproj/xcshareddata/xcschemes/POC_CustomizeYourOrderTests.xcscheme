@@ -35,6 +35,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1656D18A2AFEA9D0005C72C9"
+            BuildableName = "POC_CustomizeYourOrder.app"
+            BlueprintName = "POC_CustomizeYourOrder"
+            ReferencedContainer = "container:POC_CustomizeYourOrder.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
