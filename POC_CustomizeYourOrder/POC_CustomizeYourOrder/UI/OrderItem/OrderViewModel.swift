@@ -58,6 +58,7 @@ class OrderViewModel: OrderViewModelProtocol {
                 calculateTotalValue()
             }
             controller.updateCountItem()
+            validateIfTheButtonShouldAppear()
             
         }
     }
@@ -150,7 +151,6 @@ class OrderViewModel: OrderViewModelProtocol {
     var cookieBtn: Bool? = false {
         didSet {
             selectedCookieBtn = cookieBtn ?? false
-            print("printando selectedCookieBtn: \(selectedCookieBtn)")
             calculateTotalValue()
         }
     }
@@ -159,7 +159,6 @@ class OrderViewModel: OrderViewModelProtocol {
     var rollBtn: Bool? = false {
         didSet {
             selectedRollBtn = rollBtn ?? false
-            print("printando selectedRollBtn: \(selectedRollBtn)")
             calculateTotalValue()
         }
     }
@@ -316,16 +315,12 @@ class OrderViewModel: OrderViewModelProtocol {
     
     func addMoreItens(tag: Int) {
         selectedSection = [.moreItens: tag]
-        print("printando tag: \(tag)")
         guard let controller = controller else {
             return
         }
         tag == MoreItensTag.cookie.value ? (cookieBtn = !selectedCookieBtn) : (rollBtn = !selectedRollBtn)
-        print("printando tag == MoreItensTag.cookie.value: \(tag == MoreItensTag.cookie.value)")
         selectedRollBtn == true ? controller.changeForChecked() : controller.changeForUnchecked()
-        print("printando selectedRollBtn: \(selectedRollBtn)")
         selectedCookieBtn == true ? controller.changeForChecked() : controller.changeForUnchecked()
-        print("printando selectedCookieBtn: \(selectedCookieBtn)")
     }
     
     func getObservation(message: String) {

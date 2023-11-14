@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAQ1PsN6tlyKNc-ZTjKILdAWAB6E5rTBDY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>858690897288</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>morona.POC-CustomizeYourOrder</string>
+	<key>PROJECT_ID</key>
+	<string>deliveredfood</string>
+	<key>STORAGE_BUCKET</key>
+	<string>deliveredfood.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:858690897288:ios:0ab4b887404b435473663d</string>
+</dict>
+</plist>

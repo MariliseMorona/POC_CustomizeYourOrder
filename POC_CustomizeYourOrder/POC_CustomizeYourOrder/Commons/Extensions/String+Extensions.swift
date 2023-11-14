@@ -78,6 +78,12 @@ enum Strings {
     case fromValue
     case descriptionPlate
     case add
+    case whatObservation
+    case opcional
+    case changePlate
+    case confirmOrder
+    case receivedOrder
+    case wait
     
     
     
@@ -187,6 +193,18 @@ enum Strings {
             return "salmão temperado com limão, cebola e pimenta"
         case .add:
             return "adicionar"
+        case .whatObservation:
+            return "alguma observação do item?"
+        case .opcional:
+            return "opcional"
+        case .changePlate:
+            return "ex.: tirar algum ingrediente, ponto do prato"
+        case .confirmOrder:
+            return "confirmar pedido"
+        case .receivedOrder:
+            "uhuu, pedido feito."
+        case .wait:
+            "aguarde que ele já esta chegando."
         }
     }
 }

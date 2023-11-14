@@ -15,23 +15,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aiqBranding" translatesAutoresizingMaskIntoConstraints="NO" id="YzN-FM-v24">
-                                <rect key="frame" x="181.66666666666666" y="411" width="60" height="60"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="aiqBranding" translatesAutoresizingMaskIntoConstraints="NO" id="YzN-FM-v24">
+                                <rect key="frame" x="150" y="389" width="93" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="YzN-FM-v24" secondAttribute="height" multiplier="27:28" id="mpg-Nj-5cD"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.4823529411764706" green="0.12156862745098039" blue="0.63529411764705879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YzN-FM-v24" secondAttribute="trailing" constant="151.33333333333334" id="0xf-vU-MSs"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="YzN-FM-v24" secondAttribute="bottom" constant="347" id="3l8-gZ-khf"/>
-                            <constraint firstItem="YzN-FM-v24" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="352" id="7QS-x4-MJX"/>
-                            <constraint firstItem="YzN-FM-v24" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="181.66666666666666" id="kLv-05-Hoe"/>
+                            <constraint firstItem="YzN-FM-v24" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="150" id="74h-9m-aN1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="YzN-FM-v24" secondAttribute="bottom" constant="330" id="FCg-3s-9uN"/>
+                            <constraint firstItem="YzN-FM-v24" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="330" id="mI8-49-pFo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YzN-FM-v24" secondAttribute="trailing" constant="150" id="uiw-HT-Ess"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.671755725190835" y="374.64788732394368"/>
         </scene>
     </scenes>
     <resources>

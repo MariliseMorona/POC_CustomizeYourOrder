@@ -9,6 +9,15 @@ import UIKit
 
 class FooterSectionView: UIView {
     
+    var data: FooterSectionModel? {
+        didSet {
+            if let data = data {
+                fetchedFooterMessage(data: data)
+                fetchedCopy(data: data)
+            }
+        }
+    }
+    
     private var privatePresentBtn: Bool = false
     var presentButton: Bool {
         get { return privatePresentBtn }
@@ -93,5 +102,27 @@ extension FooterSectionView {
             make.leading.trailing.equalToSuperview().inset(16)
             make.bottom.equalToSuperview().inset(24)
         }
+    }
+}
+
+extension FooterSectionView {
+    func fetchedFooterMessage(data: FooterSectionModel) {
+        let htmlAiq = """
+                    <p style="text-align: center;">
+                        <span style="font-family: Nunito-Bold; font-size: 12pt; color: #580F78">
+                            \(data.make) &hearts; \(data.city)
+                        </span>
+                    </p>
+                """
+        footerLabel.attributedText =  NSAttributedString(html: htmlAiq)
+    }
+    
+    func fetchedCopy(data: FooterSectionModel) {
+        let htmlCopy = """
+                   <p style="font-family: Nunito-Bold; font-size: 12pt; text-align: center; color: #580F78;">
+                            \(data.copy)<br>
+                            \(data.cnpj)<br></p>
+               """
+        footerCopyLabel.attributedText =  NSAttributedString(html: htmlCopy)
     }
 }

@@ -25,13 +25,25 @@ class OrderReceiptViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view = orderView
+        orderView.footerButton.addTarget(self, action: #selector(tappedBtn), for: .touchUpInside)
         fetchedOrderItems()
         fetchedOrder()
+    }
+    
+    @objc func tappedBtn(){
+        let alertController = UIAlertController(
+            title: Strings.receivedOrder.text,
+            message: Strings.wait.text,
+            preferredStyle: UIAlertController.Style.alert
+        )
+        let confirmAction = UIAlertAction(title: Strings.ok.text, style: .default) { _ in
+            self.dismiss(animated: true)
+        }
+        alertController.addAction(confirmAction)
+        present(alertController, animated: true, completion: nil)
     }
 }
 

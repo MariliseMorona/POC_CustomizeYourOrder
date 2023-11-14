@@ -94,6 +94,16 @@ class OrderReceiptView: UIView {
         return label
     }()
     
+    lazy var footerButton: UIButton = {
+        let btn = UIButton()
+        btn.backgroundColor = UIColor.purple
+        btn.layer.cornerRadius = 8
+        btn.setTitle(Strings.confirmOrder.text, for: .normal)
+        btn.tintColor = .white
+        btn.titleLabel?.font = UIFont.nunitoBold16
+        return btn
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -113,6 +123,7 @@ extension OrderReceiptView: CodableView {
         containerView.addSubview(descriptionOrder)
         containerView.addSubview(observationOrder)
         containerView.addSubview(confirmOrder)
+        containerView.addSubview(footerButton)
     }
     
     func configConstraints() {
@@ -138,6 +149,7 @@ extension OrderReceiptView: CodableView {
         descriptionOrder.snp.makeConstraints { make in
             make.top.equalTo(addressOrder.snp.bottom).offset(26)
             make.leading.trailing.equalTo(containerView).inset(16)
+            make.centerY.equalToSuperview()
         }
         observationOrder.snp.makeConstraints { make in
             make.top.equalTo(descriptionOrder.snp.bottom).offset(26)
@@ -146,6 +158,12 @@ extension OrderReceiptView: CodableView {
         confirmOrder.snp.makeConstraints { make in
             make.top.equalTo(observationOrder.snp.bottom).offset(26)
             make.leading.trailing.equalTo(containerView).inset(16)
+        }
+        footerButton.snp.makeConstraints { make in
+            make.top.equalTo(confirmOrder.snp.bottom).offset(16)
+            make.leading.trailing.equalToSuperview().inset(24)
+            make.bottom.equalToSuperview().inset(24)
+            make.height.equalTo(48)
         }
     
     }

@@ -192,7 +192,7 @@ extension DrinkSectionView: CodableView {
                         \(Strings.chooseQuantity.text)
                    </span>
                """
-        titleView.title =  NSAttributedString(html: htmlDrink)
+        titleView.textLabel.attributedText =  NSAttributedString(html: htmlDrink)
     }
     
 }

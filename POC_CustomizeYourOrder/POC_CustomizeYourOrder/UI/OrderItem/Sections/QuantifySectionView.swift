@@ -9,9 +9,12 @@ import UIKit
 
 class QuantifySectionView: UIView {
     
-    var title: NSAttributedString? {
+    var data: QuantifySectionModel? {
         didSet {
-            titleView.title = title
+            if let data = data {
+                data.value == Strings.empty.text ? fetchedQuantityEmpty(data: data):
+                fetchedQuantify(data: data)
+            }
         }
     }
     
@@ -72,3 +75,29 @@ extension QuantifySectionView: CodableView {
         }
     }
 }
+
+extension QuantifySectionView {
+    func fetchedQuantify(data: QuantifySectionModel) {
+        let htmlQuantify = """
+                    <span style="font-family: Nunito-Bold; font-size: 16pt; color: #393A3C">
+                        \(data.title)
+                    </span><br>
+                    <span style="font-family: Nunito-SemiBold; font-size: 14pt; color: #6D6F73">
+                        \(data.subtitle)
+                    </span>
+                    <span style="font-family: Nunito-Bold; font-size: 14pt; color: #393A3C">
+                       \(data.value)
+                    </span>
+               """
+        titleView.textLabel.attributedText = NSAttributedString(html: htmlQuantify)
+    }
+    func fetchedQuantityEmpty(data: QuantifySectionModel) {
+        let htmlQuantify = """
+                    <span style="font-family: Nunito-Bold; font-size: 16pt; color: #393A3C">
+                        \(Strings.howMuch.text)
+                    </span><br>
+               """
+        titleView.textLabel.attributedText = NSAttributedString(html: htmlQuantify)
+    }
+}
+

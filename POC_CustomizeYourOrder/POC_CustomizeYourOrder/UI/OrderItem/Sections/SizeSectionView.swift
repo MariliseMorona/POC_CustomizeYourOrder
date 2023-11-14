@@ -9,15 +9,19 @@ import UIKit
 
 class SizeSectionView: UIView {
     
-    var title: NSAttributedString? {
+    var data: SizeSectionModel? {
         didSet {
-            titleView.title = title
+            if let data = data {
+                fetchedSizeTitle(data: data)
+            }
         }
     }
     
-    var middleValue: NSAttributedString? {
+    var dataValue: SizeSectionModel? {
         didSet {
-            valueMiddleLabel.attributedText = middleValue
+            if let data = data {
+                fetchedSizeValue(dataValue: data)
+            }
         }
     }
     
@@ -170,5 +174,28 @@ extension SizeSectionView: CodableView {
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview().inset(16)
         }
+    }
+}
+
+extension SizeSectionView {
+    func fetchedSizeTitle(data: SizeSectionModel){
+        let htmlSize = """
+                    <span style="font-family: Nunito-Bold; font-size: 16pt;">
+                        \(data.title)
+                    </span><br>
+                    <span style="font-family: Nunito-Bold; font-size: 12pt; color: #6D6F73">
+                        \(data.subtitle)
+                    </span>
+               """
+        titleView.textLabel.attributedText = NSAttributedString(html: htmlSize)
+    }
+    
+    func fetchedSizeValue(dataValue: SizeSectionModel){
+        let htmlValueMiddle = """
+                    <span style="font-family: Nunito-Bold; font-size: 12pt; color: #6D6F73">
+                                \(Strings.value2290.text)
+                    </span><br>
+               """
+        valueMiddleLabel.attributedText = NSAttributedString(html: htmlValueMiddle)
     }
 }

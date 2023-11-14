@@ -9,9 +9,11 @@ import UIKit
 
 class MoreSectionView: UIView {
     
-    var title: NSAttributedString? {
+    var data: MoreSectionModel? {
         didSet {
-            titleView.title = title
+            if let data = data {
+                fetchedMoreView(data: data)
+            }
         }
     }
     
@@ -120,3 +122,16 @@ extension MoreSectionView: CodableView {
     }
 }
 
+extension MoreSectionView {
+    func fetchedMoreView(data: MoreSectionModel) {
+        let htmlMore = """
+                   <span style="font-family: Nunito-Bold; font-size: 16pt; color: #393A3C">
+                        \(Strings.moreItens.text)
+                   </span><br>
+                   <span style="font-family: Nunito-Bold; font-size: 12pt; color: #6D6F73">
+                        \(Strings.selectedTwo.text)
+                   </span>
+               """
+        titleView.textLabel.attributedText = NSAttributedString(html: htmlMore)
+    }
+}

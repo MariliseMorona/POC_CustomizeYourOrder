@@ -10,9 +10,11 @@ import SnapKit
 
 class TitleSectionView: UIView {
     
-    var title: NSAttributedString? {
+    var data: TitleSectionModel? {
         didSet {
-            textLabel.attributedText = title
+            if let data = data {
+                fetchedTitleView(data: data)
+            }
         }
     }
     
@@ -42,5 +44,28 @@ extension TitleSectionView: CodableView {
         textLabel.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+}
+
+extension TitleSectionView {
+    func fetchedTitleView(data: TitleSectionModel){
+        let htmlTitle = """
+                   <span style="font-family: Nunito-Bold; font-size: 16pt; color: #393A3C">
+                        \(data.name)
+                   </span><br>
+               
+                   <span style="font-family: Nunito-Bold; font-size: 14pt; color: #6D6F73">
+                        \(data.from)
+                    </span>
+               
+                   <span style="font-family: Nunito-Bold; font-size: 18pt; color: #580F78">
+                        \(data.value)
+                    </span><br>
+               
+                   <span style="font-family: Nunito-SemiBold; font-size: 14pt; color: #6D6F73">
+                        \(data.description)
+                    </span>
+               """
+        textLabel.attributedText = NSAttributedString(html: htmlTitle)
     }
 }

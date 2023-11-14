@@ -9,14 +9,13 @@ import UIKit
 
 class ObservationSectionView: UIView {
     
-    var title: NSAttributedString? {
+    weak var delegate: ObservationSectionDelegate?
+    
+    var data: ObservationSectionModel? {
         didSet {
-            
-//            for subview in subviews {
-//                subview.removeFromSuperview()
-//            }
-            containerTextView.attributedText = title
-//            setupViews()
+            if let data = data {
+                data.placeholderP01.isEmpty ? fetchedObservation(data: data) : fetchedObservationDefault(data: data)
+            }
         }
     }
     
@@ -39,6 +38,7 @@ class ObservationSectionView: UIView {
         let text = UITextView()
         text.backgroundColor = .clear
         text.textColor = .clear
+        text.delegate = self
         return text
     }()
     
@@ -72,5 +72,38 @@ extension ObservationSectionView: CodableView {
             make.top.bottom.equalTo(containerView).inset(10)
             make.leading.trailing.equalTo(containerView).inset(12)
         }
+    }
+}
+
+extension ObservationSectionView {
+    func fetchedObservation(data: ObservationSectionModel) {
+        let htmlObservation = """
+                   <span style="font-family: Nunito-SemiBold; font-size: 14pt; color: #6D6F73">
+                        \(data.message)
+                   </span>
+               """
+        containerTextView.attributedText = NSAttributedString(html: htmlObservation)
+    }
+    
+    func fetchedObservationDefault(data: ObservationSectionModel) {
+        let htmlObservation = """
+                   <span style="font-family: Nunito-SemiBold; font-size: 14pt; color: #6D6F73">
+                        \(data.placeholderP01) &bull; \(data.placeholderP02)
+                   <br>
+                        \(data.placeholderP03)
+                   </span>
+               """
+        containerTextView.attributedText = NSAttributedString(html: htmlObservation)
+    }
+}
+
+extension ObservationSectionView: UITextViewDelegate {
+    func textViewDidEndEditing(_ textView: UITextView) {
+        guard let delegate = delegate else { return }
+        delegate.textViewDidEndEditing(textView)
+    }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        guard let delegate = delegate else { return false }
+        return delegate.textView(textView, shouldChangeTextIn: range, replacementText: text)
     }
 }

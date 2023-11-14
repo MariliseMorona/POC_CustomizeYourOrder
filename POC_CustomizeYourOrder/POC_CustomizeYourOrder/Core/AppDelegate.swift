@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Firebase
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigation.navigationBar.backgroundColor = UIColor.purple
         window?.makeKeyAndVisible()
         window?.rootViewController = navigation
-        
+        FirebaseApp.configure()
         return true
     }
 

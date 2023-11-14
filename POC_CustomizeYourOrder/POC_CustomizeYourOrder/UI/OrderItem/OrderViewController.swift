@@ -26,8 +26,13 @@ class OrderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view = orderView
-        view.backgroundColor = UIColor.grayToBackground
+        view.backgroundColor = UIColor.purple
         self.viewModel = OrderViewModel(model: nil, controller: self)
+        initialState()
+       
+    }
+
+    func initialState() {
         fetchedNavigation()
         fetchedSizeView()
         fetchedFooterView()
@@ -43,18 +48,8 @@ extension OrderViewController: OrderViewControllerProtocol {
     func updateTotalCost() {
         if let cost = viewModel?.totalCost {
             var newCost = "R$ \(cost)"
-            let htmlQuantify = """
-                        <span style="font-family: Nunito-Bold; font-size: 16pt; color: #393A3C">
-                            \(Strings.howMuch.text)
-                        </span><br>
-                        <span style="font-family: Nunito-SemiBold; font-size: 14pt; color: #6D6F73">
-                            \(Strings.total.text)
-                        </span>
-                        <span style="font-family: Nunito-Bold; font-size: 14pt; color: #393A3C">
-                           \(newCost)
-                        </span>
-                   """
-            orderView.quantifyItem.title = NSAttributedString(html: htmlQuantify)
+            let quantity = QuantifySectionModel(title: Strings.howMuch.text, subtitle: Strings.total.text, value: newCost)
+            orderView.quantifyItem.data = quantity
         } else {
             fetchedQuantifyView()
         }
@@ -74,14 +69,9 @@ extension OrderViewController: OrderViewControllerProtocol {
     
     func updateObservation() {
         if let message = self.viewModel?.messageObs {
-            let htmlObservation = """
-                       <span style="font-family: Nunito-SemiBold; font-size: 14pt; color: #6D6F73">
-                            \(message)
-                       </span>
-                   """
-            orderView.observation.title = NSAttributedString(html: htmlObservation)
+            let obs = ObservationSectionModel(message: message, placeholderP01: Strings.empty.text, placeholderP02: Strings.empty.text, placeholderP03: Strings.empty.text)
+            orderView.observation.data = obs
         }
-        
     }
     
     func changeForChecked() {
@@ -142,6 +132,7 @@ extension OrderViewController: OrderViewControllerProtocol {
     
     func changeForPresentDfAddButton() {
         orderView.quantifyItem.presentButton = ((self.viewModel?.dfAddBtn) != nil)
+        orderView.footerView.presentButton = false
     }
     
     func changeForInativedBtn() {
@@ -247,10 +238,8 @@ extension OrderViewController {
         let cancel = UIAlertAction(
             title: Strings.back.text, style: .destructive, handler: { (action) -> Void in })
 
-        
         alertController.addAction(confirmAction)
         alertController.addAction(cancel)
-        
         present(alertController, animated: true, completion: nil)
     }
     
@@ -264,7 +253,6 @@ extension OrderViewController {
         let confirmAction = UIAlertAction(
             title: Strings.ok.text, style: UIAlertAction.Style.default, handler: { (action) -> Void in })
         alertController.addAction(confirmAction)
-        
         present(alertController, animated: true, completion: nil)
     }
     
@@ -322,8 +310,6 @@ extension OrderViewController {
             action: #selector(tappedUser))
         if let address = self.viewModel?.address {
             self.navigationView.address = address
-        } else {
-//            self.viewModel.add
         }
         
         self.navigationView.btnNavigation.addTarget(self, action: #selector(tappedNavigation), for: .touchUpInside)
@@ -339,41 +325,19 @@ extension OrderViewController {
         orderView.sizeItem.largeRadioButton.addTarget(self, action: #selector(tappedRadioBtn), for: .touchUpInside)
         orderView.sizeItem.largeRadioButton.tag = SizeTag.large.value
         
-        let htmlSize = """
-                    <span style="font-family: Nunito-Bold; font-size: 16pt;">
-                        \(Strings.whatSize.text)
-                    </span><br>
-                    <span style="font-family: Nunito-Bold; font-size: 12pt; color: #6D6F73">
-                        \(Strings.selectedOne.text)
-                    </span>
-               """
-        orderView.sizeItem.title =  NSAttributedString(html: htmlSize)
+        let size = SizeSectionModel(title: Strings.whatSize.text, subtitle: Strings.selectedOne.text, value: Strings.empty.text)
+        orderView.sizeItem.data =  size
         
-        let htmlValueMiddle = """
-                    <span style="font-family: Nunito-Bold; font-size: 12pt; color: #6D6F73">
-                                \(Strings.value2290.text)
-                    </span><br>
-               """
-        orderView.sizeItem.middleValue = NSAttributedString(html: htmlValueMiddle)
+        let sizeValue = SizeSectionModel(title: Strings.empty.text, subtitle: Strings.empty.text, value: Strings.value2290.text)
+        orderView.sizeItem.dataValue =  sizeValue
+
     }
     
     fileprivate func fetchedFooterView() {
         orderView.footerView.footerButton.addTarget(self, action: #selector(tappedFooterBtn), for: .touchUpInside)
-        let htmlAiq = """
-                    <p style="text-align: center;">
-                        <span style="font-family: Nunito-Bold; font-size: 12pt; color: #580F78">
-                            \(Strings.makeWith.text) &hearts; \(Strings.maringa.text)
-                        </span>
-                    </p>
-                """
-        orderView.footerView.footerLabel.attributedText =  NSAttributedString(html: htmlAiq)
         
-        let htmlCopy = """
-                   <p style="font-family: Nunito-Bold; font-size: 12pt; text-align: center; color: #580F78;">
-                            \(Strings.footer.text)<br>
-                            \(Strings.cnpj.text)<br></p>
-               """
-        orderView.footerView.footerCopyLabel.attributedText =  NSAttributedString(html: htmlCopy)
+        let footerData = FooterSectionModel(make: Strings.makeWith.text, city: Strings.maringa.text, copy: Strings.footer.text, cnpj: Strings.cnpj.text)
+        orderView.footerView.data = footerData
     }
     
     fileprivate func fetchedQuantifyView() {
@@ -384,31 +348,11 @@ extension OrderViewController {
         orderView.quantifyItem.quantifyView.decreaseItem.addTarget(self, action: #selector(tappedReduceItem), for: .touchUpInside)
         orderView.quantifyItem.quantifyView.decreaseItem.tag = 3
         
-        let htmlTitle = """
-                   <span style="font-family: Nunito-Bold; font-size: 16pt; color: #393A3C">
-                        \(Strings.namePlate.text)
-                   </span><br>
-               
-                   <span style="font-family: Nunito-Bold; font-size: 14pt; color: #6D6F73">
-                        \(Strings.fromValue.text)
-                    </span>
-               
-                   <span style="font-family: Nunito-Bold; font-size: 18pt; color: #580F78">
-                        \(Strings.value1990.text)
-                    </span><br>
-               
-                   <span style="font-family: Nunito-SemiBold; font-size: 14pt; color: #6D6F73">
-                        \(Strings.descriptionPlate.text)
-                    </span>
-               """
-        orderView.titleItem.title =  NSAttributedString(html: htmlTitle)
+        let title = TitleSectionModel(name: Strings.namePlate.text, from: Strings.fromValue.text, value: Strings.value1990.text, description: Strings.descriptionPlate.text)
+        orderView.titleItem.data = title
         
-        let htmlQuantify = """
-                    <span style="font-family: Nunito-Bold; font-size: 16pt; color: #393A3C">
-                        \(Strings.howMuch.text)
-                    </span><br>
-               """
-        orderView.quantifyItem.title = NSAttributedString(html: htmlQuantify)
+        let quantify = QuantifySectionModel(title: Strings.howMuch.text, subtitle: Strings.empty.text, value: Strings.empty.text)
+        orderView.quantifyItem.data = quantify
         
     }
     
@@ -425,7 +369,6 @@ extension OrderViewController {
         orderView.drinkItem.quantifySecondDrinkView.addItem.addTarget(self, action: #selector(tappedAddDrink), for: .touchUpInside)
         orderView.drinkItem.quantifySecondDrinkView.decreaseItem.addTarget(self, action: #selector(tappedReduceDrink), for: .touchUpInside)
         
-        
         orderView.drinkItem.quantifyThirdDrinkView.decreaseItem.tag = DrinkTag.water.value
         orderView.drinkItem.quantifyThirdDrinkView.addItem.tag = DrinkTag.water.value
         orderView.drinkItem.quantifyThirdDrinkView.decreaseItem.setImage(UIImage.inativedDecreaseBtn, for: .normal)
@@ -440,15 +383,8 @@ extension OrderViewController {
         orderView.cutleryItem.forkView.addItem.addTarget(self, action: #selector(tappedCutleryRadioBtn), for: .touchUpInside)
         orderView.cutleryItem.forkView.addItem.tag = CutleryTag.fork.value
     
-        let htmlFork = """
-                   <span style="font-family: Nunito-Bold; font-size: 16pt; color: #393A3C">
-                        \(Strings.needFork.text)
-                   </span><br>
-                   <span style="font-family: Nunito-Bold; font-size: 12pt; color: #6D6F73">
-                        \(Strings.selectedOne)
-                   </span>
-               """
-        orderView.cutleryItem.title = NSAttributedString(html: htmlFork)
+        let cutData = CutlerySectionModel(title: Strings.needFork.text, subtitle: Strings.selectedOne.text)
+        orderView.cutleryItem.data = cutData
     }
     
     fileprivate func fetchedMoreView() {
@@ -460,38 +396,23 @@ extension OrderViewController {
         orderView.moreItem.rollView.addItem.addTarget(self, action: #selector(tappedCheckBox), for: .touchUpInside)
         orderView.moreItem.rollView.addItem.tag = MoreItensTag.rolls.value
         
-        let htmlMore = """
-                   <span style="font-family: Nunito-Bold; font-size: 16pt; color: #393A3C">
-                        \(Strings.moreItens.text)
-                   </span><br>
-                   <span style="font-family: Nunito-Bold; font-size: 12pt; color: #6D6F73">
-                        \(Strings.selectedTwo.text)
-                   </span>
-               """
-        orderView.moreItem.title = NSAttributedString(html: htmlMore)
+        let moreData = MoreSectionModel(title: Strings.moreItens.text, subtitle: Strings.selectedTwo.text)
+        orderView.moreItem.data = moreData
     }
     
     func fetchedObservationView(){
-        orderView.observation.inputTextView.delegate = self
-        let htmlObservation = """
-                   <span style="font-family: Nunito-SemiBold; font-size: 14pt; color: #6D6F73">
-                        alguma observação do item? &bull; opcional
-                   <br>
-                        ex.: tirar algum ingrediente, ponto do prato
-                   </span>
-               """
-        orderView.observation.title = NSAttributedString(html: htmlObservation)
+        let obs = ObservationSectionModel(message: Strings.empty.text, placeholderP01: Strings.whatObservation.text, placeholderP02: Strings.opcional.text , placeholderP03: Strings.changePlate.text)
+        orderView.observation.data = obs
     }
 }
 
-extension OrderViewController: UITextViewDelegate {
+extension OrderViewController: ObservationSectionDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
-        if let text = textView.text {
-            self.viewModel?.getObservation(message: text)
+        if let text = textView.text, text != Strings.empty.text {            self.viewModel?.getObservation(message: text)
         }
     }
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if let text = textView.text {
+        if let text = textView.text, text != Strings.empty.text {
             self.viewModel?.getObservation(message: text)
             return true
         }

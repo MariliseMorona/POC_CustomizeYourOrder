@@ -9,9 +9,11 @@ import UIKit
 
 class CutlerySectionView: UIView {
     
-    var title: NSAttributedString? {
+    var data: CutlerySectionModel? {
         didSet {
-            titleView.title = title
+            if let data = data {
+                fetchedCutleryView(data: data)
+            }
         }
     }
     
@@ -103,5 +105,19 @@ extension CutlerySectionView: CodableView {
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview().inset(12)
         }
+    }
+}
+
+extension CutlerySectionView {
+    func fetchedCutleryView(data: CutlerySectionModel) {
+        let htmlFork = """
+                   <span style="font-family: Nunito-Bold; font-size: 16pt; color: #393A3C">
+                        \(data.title)
+                   </span><br>
+                   <span style="font-family: Nunito-Bold; font-size: 12pt; color: #6D6F73">
+                        \(data.subtitle)
+                   </span>
+               """
+        titleView.textLabel.attributedText = NSAttributedString(html: htmlFork)
     }
 }
