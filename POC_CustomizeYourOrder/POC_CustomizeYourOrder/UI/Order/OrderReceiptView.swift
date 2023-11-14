@@ -72,14 +72,14 @@ class OrderReceiptView: UIView {
         label.textAlignment = .justified
         return label
     }()
-    
+    lazy var separatorAddressView = SectionDividerView()
     lazy var descriptionOrder: UILabel = {
        let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .justified
         return label
     }()
-    
+    lazy var separatorDescriptionView = SectionDividerView()
     lazy var observationOrder: UILabel = {
        let label = UILabel()
         label.numberOfLines = 0
@@ -90,7 +90,9 @@ class OrderReceiptView: UIView {
     lazy var confirmOrder: UILabel = {
        let label = UILabel()
         label.numberOfLines = 0
-        label.textAlignment = .justified
+        label.textAlignment = .center
+        label.font = UIFont.nunitoRegular12
+        label.text = "se tiver tu ok com seu pedido, confirma ai."
         return label
     }()
     
@@ -120,7 +122,9 @@ extension OrderReceiptView: CodableView {
         headerView.addSubview(imageItem)
         containerView.addSubview(title)
         containerView.addSubview(addressOrder)
+        containerView.addSubview(separatorAddressView)
         containerView.addSubview(descriptionOrder)
+        containerView.addSubview(separatorDescriptionView)
         containerView.addSubview(observationOrder)
         containerView.addSubview(confirmOrder)
         containerView.addSubview(footerButton)
@@ -146,13 +150,21 @@ extension OrderReceiptView: CodableView {
             make.top.equalTo(title.snp.bottom).offset(26)
             make.leading.trailing.equalTo(containerView).inset(16)
         }
+        separatorAddressView.snp.makeConstraints { make in
+            make.top.equalTo(addressOrder.snp.bottom).offset(8)
+            make.leading.trailing.equalTo(containerView)
+        }
         descriptionOrder.snp.makeConstraints { make in
-            make.top.equalTo(addressOrder.snp.bottom).offset(26)
+            make.top.equalTo(separatorAddressView.snp.bottom).offset(26)
             make.leading.trailing.equalTo(containerView).inset(16)
             make.centerY.equalToSuperview()
         }
+        separatorDescriptionView.snp.makeConstraints { make in
+            make.top.equalTo(descriptionOrder.snp.bottom).offset(8)
+            make.leading.trailing.equalTo(containerView)
+        }
         observationOrder.snp.makeConstraints { make in
-            make.top.equalTo(descriptionOrder.snp.bottom).offset(26)
+            make.top.equalTo(separatorDescriptionView.snp.bottom).offset(26)
             make.leading.trailing.equalTo(containerView).inset(16)
         }
         confirmOrder.snp.makeConstraints { make in
