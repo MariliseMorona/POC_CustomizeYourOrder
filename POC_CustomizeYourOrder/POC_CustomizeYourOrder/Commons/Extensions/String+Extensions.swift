@@ -85,8 +85,6 @@ enum Strings {
     case receivedOrder
     case wait
     
-    
-    
     var text: String {
         switch self {
         case .empty:
@@ -202,9 +200,9 @@ enum Strings {
         case .confirmOrder:
             return "confirmar pedido"
         case .receivedOrder:
-            "uhuu, pedido feito."
+            return "uhuu, pedido feito."
         case .wait:
-            "aguarde que ele já esta chegando."
+            return "aguarde que ele já esta chegando."
         }
     }
 }
