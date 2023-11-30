@@ -244,6 +244,8 @@ extension OrderViewController {
     }
     
     @objc private func tappedUser(){
+        let numbers = [0]
+        let _ = numbers[1]
         let alertController = UIAlertController(
             title: Strings.sorry.text,
             message: Strings.somethingWrong.text,
